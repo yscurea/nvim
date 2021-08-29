@@ -26,7 +26,7 @@ if len(s:removed_plugins) > 0
   call dein#recache_runtimepath()
 endif
 
-colorscheme hybrid
+colorscheme monokai
 highlight ColorColumn guibg=#202020 ctermbg=lightgray
 filetype plugin indent on
 syntax enable

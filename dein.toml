@@ -51,3 +51,11 @@ repo = 'thosakwe/vim-flutter'
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+[[plugins]]
+repo = 'dense-anaysis/ale'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
