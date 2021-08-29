@@ -1,0 +1,53 @@
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+hook_add='''
+set background=dark
+'''
+
+[[plugins]]
+repo = 'sickill/vim-monokai'
+hook_add='''
+set background=dark
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add='''
+let g:airline_powerline_fonts = 1
+let g:airline#extension#tabline#enabled = 1
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'preservim/nerdtree'
+hook_add='''
+nnoremap <C-f> :NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+
+[[plugins]]
+repo = 'dart-lang/dart-vim-plugin'
+
+[[plugins]]
+repo = 'thosakwe/vim-flutter'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
