@@ -60,7 +60,7 @@ set autochdir
 
 let mapleader = "\<Space>"
 nnoremap <leader>v :e $MYVIMRC<CR>
-nnoremap <Leader>p :e ~/AppData/Local/nvim/dein.toml<CR>
+nnoremap <Leader>p :e ~/.config/nvim/dein.toml<CR>
 nnoremap <Leader>i :source $MYVIMRC<CR>
 nnoremap <Leader>d "_d
 xnoremap <Leader>d "_d
