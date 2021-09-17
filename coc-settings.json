@@ -1,25 +1,10 @@
 {
-    "coc.preferences.formatOnSaceFiletypes": [
+    "coc.preferences.formatOnSaveFiletypes": [
 	"rust"
     ],
     "suggest.noselect": true,
     "suggest.preferCompleteThanJumpPlaceholder": true,
     "languageserver": {
-	"clangd": {
-	    "command": "clangd",
-	    "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-	    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
-	}, 
-	"rust": {
-	  "command": "rust-analyzer",
-	  "filetypes": ["rust"],
-	  "rootPatterns": ["Cargo.toml"]
-	},
-        "dockerfile": {
-            "command": "docker-langserver",
-            "filetypes": ["dockerfile"],
-            "args": ["--stdio"]
-        },
 	"golang": {
 	    "command": "gopls",
 	    "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],

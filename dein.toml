@@ -24,9 +24,28 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'tpope/vim-commentary'
 
 [[plugins]]
-repo = 'preservim/nerdtree'
+repo = 'lambdalisue/fern.vim'
 hook_add='''
-nnoremap <C-f> :NERDTreeToggle<CR>
+nnoremap <C-f> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+let g:fern#renderer = 'nerdfont'
+'''
+
+[[plugins]]
+repo = 'lambdalisue/nerdfont.vim'
+
+[[plugins]]
+repo = 'lambdalisue/fern-renderer-nerdfont.vim'
+hook_add='''
+'''
+
+[[plugins]]
+repo = 'lambdalisue/glyph-palette.vim'
+hook_add='''
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+  autocmd FileType nerdtree,startify call glyph_palette#apply()
+augroup END
 '''
 
 [[plugins]]
@@ -52,10 +71,51 @@ repo = 'thosakwe/vim-flutter'
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
-repo = 'dense-anaysis/ale'
+repo = 'dense-analysis/ale'
+hook_add='''
+let g:ale_sign_error='x'
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_save = 1
+set omnifunc=ale#completion#OmniFunc
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'prettier/vim-prettier'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+hook_add = '''
+nnoremap <silent><Leader>h :History<CR>
+nnoremap <silent><Leader>b :Buffers<CR>
+command! -bang -nargs=* Rg
+    \ call fzf#vim#grep(
+    \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+    \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
+'''
+
+[[plugins]]
+repo = 'ntpeters/vim-better-whitespace'
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'preservim/tagbar'
+hook_add = '''
+noremap <F8> :TagbarToggle<CR>
+'''

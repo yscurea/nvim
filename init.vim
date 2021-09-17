@@ -26,8 +26,10 @@ if len(s:removed_plugins) > 0
   call dein#recache_runtimepath()
 endif
 
-colorscheme monokai
-highlight ColorColumn guibg=#202020 ctermbg=lightgray
+set t_Co=256
+set t_ut=""
+colorscheme hybrid
+highlight ColorColumn guibg=#202020 ctermbg=236
 filetype plugin indent on
 syntax enable
 set encoding=UTF-8
@@ -43,7 +45,7 @@ set wildmenu
 set showmatch
 set pumblend=15
 set cursorline
-set shiftwidth=2
+set shiftwidth=4
 set ignorecase
 set smartcase
 set incsearch
@@ -114,13 +116,9 @@ onoremap { i{
 inoremap jj <ESC>
 inoremap <C-l> <Del>
 inoremap <C-k> <C-o>k
+inoremap <S-TAB> <C-o><<
 tnoremap jj <C-\><C-n>
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " recover session {
 au VimLeave * mks!  ~/vimsession
