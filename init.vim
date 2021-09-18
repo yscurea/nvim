@@ -1,3 +1,4 @@
+" setting dein
 let s:dein_dir = expand('~/.config/nvim/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if &runtimepath !~# '/dein.vim'
@@ -29,9 +30,12 @@ endif
 set t_Co=256
 set t_ut=""
 colorscheme hybrid
+highlight Search guibg=#220022 ctermbg=249
+set colorcolumn=80
 highlight ColorColumn guibg=#202020 ctermbg=236
 filetype plugin indent on
 syntax enable
+set title
 set encoding=UTF-8
 set guifont=Hack:h11
 set guifontwide=Hack:h11
@@ -56,7 +60,6 @@ set nowritebackup
 set cmdheight=1
 set updatetime=300
 set laststatus=2
-set colorcolumn=80
 set clipboard+=unnamedplus
 set autochdir
 
@@ -112,7 +115,9 @@ onoremap 2 i"
 onoremap 7 i'
 onoremap @ i`
 onoremap [ i[
+onoremap ] i]
 onoremap { i{
+onoremap } i}
 inoremap jj <ESC>
 inoremap <C-l> <Del>
 inoremap <C-k> <C-o>k

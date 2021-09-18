@@ -1,15 +1,11 @@
+# colorscheme
 [[plugins]]
 repo = 'w0ng/vim-hybrid'
 hook_add='''
 set background=dark
 '''
 
-[[plugins]]
-repo = 'sickill/vim-monokai'
-hook_add='''
-set background=dark
-'''
-
+# make the status bar easier to see
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add='''
@@ -20,9 +16,11 @@ let g:airline#extension#tabline#enabled = 1
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
 
+# comment out with typing 'gcc'
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
+# display file tree
 [[plugins]]
 repo = 'lambdalisue/fern.vim'
 hook_add='''
@@ -30,14 +28,17 @@ nnoremap <C-f> :Fern . -reveal=% -drawer -toggle -width=40<CR>
 let g:fern#renderer = 'nerdfont'
 '''
 
+# use nerd font
 [[plugins]]
 repo = 'lambdalisue/nerdfont.vim'
 
+# use nerd font in fern
 [[plugins]]
 repo = 'lambdalisue/fern-renderer-nerdfont.vim'
 hook_add='''
 '''
 
+# colorful in fern
 [[plugins]]
 repo = 'lambdalisue/glyph-palette.vim'
 hook_add='''
@@ -48,12 +49,33 @@ augroup my-glyph-palette
 augroup END
 '''
 
+# show icon in fern
 [[plugins]]
 repo = 'ryanoasis/vim-devicons'
 
+# language server
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
+hook_add = '''
+inoremap <silent><expr> <C-space> coc#refresh()
+
+nnoremap gd <Plug>(coc-definition)
+nnoremap gy <Plug>(coc-type-definition)
+nnoremap gi <Plug>(coc-implementation)
+nnoremap gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+    if (index(['vim','help'],&filetype) >= 0)
+	execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+	call CocActionAsync('doHover')
+    else
+	execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
+endfunction
+'''
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
@@ -67,9 +89,11 @@ repo = 'dart-lang/dart-vim-plugin'
 [[plugins]]
 repo = 'thosakwe/vim-flutter'
 
+# automatically write close tag. eg () "" {}
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
+# asynchronous Lint Engine
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add='''
@@ -79,23 +103,29 @@ let g:ale_lint_on_save = 1
 set omnifunc=ale#completion#OmniFunc
 '''
 
+# use git in vim
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-[[plugins]]
-repo = 'prettier/vim-prettier'
+# # prettier
+# [[plugins]]
+# repo = 'prettier/vim-prettier'
 
+# eg:	'foobar' - ds' -> foobar, 'foobar' - cs'" -> "foobar"
 [[plugins]]
 repo = 'tpope/vim-surround'
 
+# show a git diff in the sign column
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 
+# general-purpose command-line fuzzy finder
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --bin'
 merged = '0'
 
+# alignment fzf and vim
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
@@ -108,14 +138,10 @@ command! -bang -nargs=* Rg
     \   fzf#vim#with_preview({'options': '--exact --reverse'}, 'right:50%:wrap'))
 '''
 
+# highlight all trailing whitespace
 [[plugins]]
 repo = 'ntpeters/vim-better-whitespace'
 
+# show indent-line
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-
-[[plugins]]
-repo = 'preservim/tagbar'
-hook_add = '''
-noremap <F8> :TagbarToggle<CR>
-'''
