@@ -91,8 +91,6 @@ nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 nnoremap s= <C-w>=
 nnoremap s_ <C-w>_
-nnoremap <Leader>n :tabnew<CR>
-nnoremap <Leader>e :tabe 
 nnoremap <Leader>< :tabm -1<CR>
 nnoremap <Leader>> :tabm +1<CR>
 noremap <Left> <Nop>
@@ -105,7 +103,7 @@ noremap <C-j> +
 noremap <C-k> -
 noremap + <C-a>
 noremap - <C-x>
-nnoremap <silent><C-c><C-c> :nohlsearch<CR>
+nnoremap <silent><C-c> :nohlsearch<CR>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
 nnoremap <Leader>t :bo term<CR>
@@ -115,13 +113,10 @@ onoremap 2 i"
 onoremap 7 i'
 onoremap @ i`
 onoremap [ i[
-onoremap ] i]
 onoremap { i{
-onoremap } i}
 inoremap jj <ESC>
 inoremap <C-l> <Del>
 inoremap <C-k> <C-o>k
-inoremap <S-TAB> <C-o><<
 tnoremap jj <C-\><C-n>
 
 
