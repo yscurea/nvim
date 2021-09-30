@@ -11,5 +11,5 @@
 	    "filetypes": ["go"]
 	}
     },
-    "python.jediEnabled": false
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
 }

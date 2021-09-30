@@ -1,4 +1,4 @@
-" setting dein
+" setting dein {
 let s:dein_dir = expand('~/.config/nvim/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if &runtimepath !~# '/dein.vim'
@@ -26,20 +26,28 @@ if len(s:removed_plugins) > 0
   call map(s:removed_plugins, "delete(v:val, 'rf')")
   call dein#recache_runtimepath()
 endif
+" }
 
+:lua require('init')
+
+" color {
 set t_Co=256
 set t_ut=""
 colorscheme hybrid
 highlight Search guibg=#220022 ctermbg=249
 set colorcolumn=80
 highlight ColorColumn guibg=#202020 ctermbg=236
+" }
 filetype plugin indent on
 syntax enable
-set title
+" use utf-8
 set encoding=UTF-8
+" set font
 set guifont=Hack:h11
 set guifontwide=Hack:h11
+" set line number
 set number
+" wrap or nowrap
 set wrap
 set autoread
 set autoindent
@@ -60,18 +68,26 @@ set nowritebackup
 set cmdheight=1
 set updatetime=300
 set laststatus=2
+" syncronize windows clipboard
 set clipboard+=unnamedplus
+" open terminal with current directory
 set autochdir
 
+" key mapping {
 let mapleader = "\<Space>"
+" config related {
 nnoremap <leader>v :e $MYVIMRC<CR>
-nnoremap <Leader>p :e ~/.config/nvim/dein.toml<CR>
 nnoremap <Leader>i :source $MYVIMRC<CR>
+" }
+" remove highlight color by <C-c>
+nnoremap <silent><C-c> :nohlsearch<CR>
+" delete with don't save clipboard {
 nnoremap <Leader>d "_d
 xnoremap <Leader>d "_d
-nnoremap <Leader>l gt
-nnoremap <Leader>h g<S-t>
+" }
+" replace C-w for s {
 nnoremap s <Nop>
+nnoremap sw s
 nnoremap <S-s> s
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
@@ -91,33 +107,83 @@ nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 nnoremap s= <C-w>=
 nnoremap s_ <C-w>_
+" }
+" tab related {
+nnoremap <Leader>l gt
+nnoremap <Leader>h g<S-t>
 nnoremap <Leader>< :tabm -1<CR>
 nnoremap <Leader>> :tabm +1<CR>
+" }
+" don't use arrow key {
 noremap <Left> <Nop>
 noremap <Down> <Nop>
 noremap <Up> <Nop>
 noremap <Right> <Nop>
+" }
+" cursor related {
 noremap <C-l> $
 noremap <C-h> 0
 noremap <C-j> +
 noremap <C-k> -
 noremap + <C-a>
 noremap - <C-x>
-nnoremap <silent><C-c> :nohlsearch<CR>
-nnoremap <Leader>w :w<CR>
+" }
+" save file
+nnoremap <Leader>w :wa<CR>
+nnoremap <Leader>q :q<CR>
+" make easy to replace word on cursor
 nnoremap <Leader>re :%s;\<<C-R><C-W>\>;g<Left><Left>;
-nnoremap <Leader>t :bo term<CR>
-nnoremap <Leader>a @:
+" make easy to handle editing inner words {
 onoremap 8 i(
 onoremap 2 i"
 onoremap 7 i'
 onoremap @ i`
 onoremap [ i[
 onoremap { i{
-inoremap jj <ESC>
+" }
+" make easy to move cursor in insert-mode {
+" inoremap <C-h> <BS> "(default)
 inoremap <C-l> <Del>
 inoremap <C-k> <C-o>k
+" }
+" set returning normal-mode to jj {
+inoremap jj <ESC>
 tnoremap jj <C-\><C-n>
+" }
+" }
+
+" toggle terminal {
+" ctrl + ; == <C-[> or <ESC>
+nnoremap <C-[> :call ChooseTerm("term-slider", 1)<CR>
+" nnoremap <C-^> :call ChooseTerm("term-pane", 0)<CR>
+function! ChooseTerm(termname, slider)
+    let pane = bufwinnr(a:termname)
+    let buf = bufexists(a:termname)
+    if pane > 0
+	" pane is visible
+	if a:slider > 0
+		:exe pane . "wincmd c"
+	else
+		:exe "e #"
+	endif
+    elseif buf > 0
+	" buffer is not in pane
+	if a:slider
+		:exe "botright split"
+		:exe "resize 15"
+	endif
+	:exe "buffer " . a:termname
+    else
+	" buffer is not loaded, create
+	if a:slider
+		:exe "botright split"
+		:exe "resize 15"
+	endif
+	:terminal
+	:exe "f " a:termname
+    endif
+endfunction
+" }
 
 
 " recover session {
