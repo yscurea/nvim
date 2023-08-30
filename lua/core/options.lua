@@ -33,6 +33,9 @@ opt.number = true
 opt.numberwidth = 2
 opt.ruler = false
 
+-- 列位置ハイライト
+opt.colorcolumn = "80"
+
 -- NVIM intro を無効にします
 opt.shortmess:append("sI")
 
