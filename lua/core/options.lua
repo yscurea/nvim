@@ -3,7 +3,7 @@ local g = vim.g
 
 -------------------------------------- globals -----------------------------------------
 g.mapleader = " "
-g.plugin_cache_dir = vim.fn.stdpath "data" .. "/lazy"
+g.plugin_cache_dir = vim.fn.stdpath("data") .. "/lazy"
 -- disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
@@ -34,7 +34,7 @@ opt.numberwidth = 2
 opt.ruler = false
 
 -- NVIM intro を無効にします
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -47,18 +47,19 @@ opt.undofile = true
 opt.updatetime = 250
 
 -- 一部のデフォルトプロバイダーを無効にします
-for _, provider in ipairs { "node", "perl", "python3", "ruby" } do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
-end
+-- for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
+--   vim.g["loaded_" .. provider .. "_provider"] = 0
+-- end
 
 -- mason.nvimによってインストールされたバイナリをパスに追加
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 -- 使用するターミナルをcmdではなくpowershellに変更する
 local powershell_options = {
-  shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
-  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+  shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+  shellcmdflag =
+  "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
   shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
   shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
   shellquote = "",
@@ -68,23 +69,28 @@ for option, value in pairs(powershell_options) do
   vim.opt[option] = value
 end
 
--- ターミナルを開いたときにインサートモードで開始する
-vim.api.nvim_create_autocmd(
-  { "TermOpen" },
-  {
-    pattern = "*",
-    command = "startinsert"
-  }
-)
+-- pythonのパスを設定する、pyenvによってglobal設定されているpythonを使用する
+local handle = io.popen("pyenv which python")
+local function cr_lines(s)
+  return s:gsub("\r\n?", "\n"):gmatch("(.-)\n")
+end
+if handle ~= nil then
+  local result = handle:read("*a")
+  handle:close()
+  g.python3_host_prog = cr_lines(result)()
+end
 
-vim.api.nvim_create_autocmd(
-  "TextYankPost",
-  {
-    pattern = { "*" },
-    callback = function()
-      vim.highlight.on_yank()
-    end,
-  }
-)
+-- ターミナルを開いたときにインサートモードで開始する
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+  pattern = "*",
+  command = "startinsert",
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = { "*" },
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
 
 vim.api.nvim_create_user_command("OpenVimrc", "<cmd>e ~/.config/nvim/init.lua", {})

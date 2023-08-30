@@ -220,7 +220,8 @@ local plugins = {
 
   { -- 空白飛ばし上下移動
     "haya14busa/vim-edgemotion",
-    keys = { "<leader>J", "<leader>K" },
+    event = "CursorMoved",
+    -- keys = { "<leader>J", "<leader>K" }, -- FIXME: なぜか効かない、要修正
     init = function()
       require("core.utils").load_mappings(require("plugins.mappings.vim-edgemotion"))
     end,
@@ -448,6 +449,18 @@ local plugins = {
     "dhruvasagar/vim-table-mode",
     ft = "md",
   },
+
+  -- {
+  --   "linux-cultist/venv-selector.nvim",
+  --   dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+  --   ft = "py",
+  --   keys = { {
+  --     "<leader>vs",
+  --     "<cmd>:VenvSelect<cr>",
+  --     "<leader>vc",
+  --     "<cmd>:VenvSelectCached<cr>",
+  --   } },
+  -- },
 }
 
 return plugins
