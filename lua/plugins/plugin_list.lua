@@ -5,27 +5,13 @@ local plugins = {
     lazy = false,
   },
 
-  { -- カラーテーマ
-    "navarasu/onedark.nvim",
-    cond = false,
-    event = "VimEnter",
-    config = function()
-      require("onedark").load()
-    end,
-  },
-
-  { -- カラーテーマ
-    "rmehri01/onenord.nvim",
-    -- event = "VimEnter",
-    cond = false,
-    config = true,
-  },
-
   {
-    "sainnhe/sonokai",
-    event = "VimEnter",
+    "catppuccin/nvim",
+    lazy = false,
+    name = "catppuccin",
+    priority = 1000,
     config = function()
-      vim.cmd([[colorscheme sonokai]])
+      vim.cmd([[colorscheme catppuccin]])
     end,
   },
 
@@ -229,12 +215,12 @@ local plugins = {
 
   { -- f ジャンプで一回で飛べる位置を色づけ
     "unblevable/quick-scope",
-    event = "BufReadPost",
+    event = "CursorMoved",
   },
 
   { -- カーソル以下と同じ単語をハイライト
     "RRethy/vim-illuminate",
-    event = "BufReadPost",
+    event = "CursorMoved",
   },
 
   { -- カラーコードなどを色づけしてくれる
@@ -245,7 +231,12 @@ local plugins = {
 
   { -- TODO などのコメントを色付け、telescopeで検索可能にする
     "folke/todo-comments.nvim",
+    cmd = "TodoTelescope",
     dependencies = { "nvim-lua/plenary.nvim" },
+    init = function()
+      require("core.utils").load_mappings(require("plugins.mappings.todo-comments"))
+    end,
+    config = true,
   },
 
   { -- コードの問題点を一覧で表示
@@ -328,6 +319,9 @@ local plugins = {
     dependencies = {
       "mfussenegger/nvim-dap",
     },
+    config = function()
+      require("dap-python").setup("poetry run python")
+    end,
   },
 
   { -- マルチカーソル
@@ -347,18 +341,20 @@ local plugins = {
 
   { -- 下に各種情報表示
     "nvim-lualine/lualine.nvim",
-    event = "BufReadPost",
+    event = "CursorMoved",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "navarasu/onedark.nvim",
       {
         "SmiteshP/nvim-navic",
+        event = "CursorMoved",
         config = function()
           require("plugins.configs.nvim-navic")
         end,
       },
     },
-    config = true,
+    config = function()
+      require("plugins.configs.lualine")
+    end,
   },
 
   { -- bufferを画面上部に表示
@@ -384,7 +380,7 @@ local plugins = {
 
   { -- スクロールバーを表示
     "petertriho/nvim-scrollbar",
-    event = "BufReadPost",
+    event = "CursorMoved",
     dependencies = {
       { "kevinhwang91/nvim-hlslens" },
       { "lewis6991/gitsigns.nvim" },
@@ -437,11 +433,20 @@ local plugins = {
       "FlutterSuper",
       "FlutterReanalyze",
     },
+    ft = "dart",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("flutter-tools").setup({})
+      require("flutter-tools").setup()
+    end,
+  },
+
+  {
+    "dart-lang/dart-vim-plugin",
+    ft = "dart",
+    config = function()
+      vim.g.dart_format_on_save = true
     end,
   },
 

@@ -8,19 +8,19 @@ local options = {
       },
       i = {
         ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
-      }
+      },
     },
   },
   pickers = {
     find_files = {
-      theme = "dropdown"
-    }
+      theme = "dropdown",
+    },
   },
   extensions = {
     ["themes"] = {},
     ["terms"] = {},
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown {}
+      require("telescope.themes").get_dropdown({}),
     },
     ["live_grep_args"] = {
       auto_quoting = true,
@@ -29,9 +29,9 @@ local options = {
           ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
           ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt({ postfix = " --iglob " }),
         },
-      }
+      },
     },
-  }
+  },
 }
 
 require("telescope").setup(options)

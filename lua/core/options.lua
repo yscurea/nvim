@@ -10,6 +10,7 @@ g.loaded_netrwPlugin = 1
 g.editorconfig = true
 
 -------------------------------------- options ------------------------------------------
+opt.autoread = true
 opt.laststatus = 3
 opt.showmode = false
 
@@ -50,9 +51,9 @@ opt.undofile = true
 opt.updatetime = 250
 
 -- 一部のデフォルトプロバイダーを無効にします
--- for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
---   vim.g["loaded_" .. provider .. "_provider"] = 0
--- end
+for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
+  vim.g["loaded_" .. provider .. "_provider"] = 0
+end
 
 -- mason.nvimによってインストールされたバイナリをパスに追加
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
@@ -73,15 +74,11 @@ for option, value in pairs(powershell_options) do
 end
 
 -- pythonのパスを設定する、pyenvによってglobal設定されているpythonを使用する
-local handle = io.popen("pyenv which python")
+local result = vim.fn.system("pyenv which python")
 local function cr_lines(s)
   return s:gsub("\r\n?", "\n"):gmatch("(.-)\n")
 end
-if handle ~= nil then
-  local result = handle:read("*a")
-  handle:close()
-  g.python3_host_prog = cr_lines(result)()
-end
+g.python3_host_prog = cr_lines(result)()
 
 -- ターミナルを開いたときにインサートモードで開始する
 vim.api.nvim_create_autocmd({ "TermOpen" }, {

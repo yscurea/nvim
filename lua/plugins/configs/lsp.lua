@@ -69,34 +69,23 @@ local on_attach = function(client, bufnr)
       group = format_augroup,
       buffer = bufnr,
       callback = function()
-        -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-        -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-        -- vim.lsp.buf.formatting_sync()
         vim.lsp.buf.format({ async = false })
       end,
     })
   end
-  -- client.server_capabilities.documentFormattingProvider = false
-  -- client.server_capabilities.documentRangeFormattingProvider = false
   utils.load_mappings(mappings, { buffer = bufnr })
-  if client.server_capabilities.documentSymbolProvider then
-    navic.attach(client, bufnr)
-    navbuddy.attach(client, bufnr)
-  end
+  navic.attach(client, bufnr)
+  navbuddy.attach(client, bufnr)
 end
 
--- lsp server 設定
+-- LSP server 設定
 require("mason-lspconfig").setup_handlers({
-  -- The first entry (without a key) will be the default handler
-  -- and will be called for each installed server that doesn't have
-  -- a dedicated handler.
-  function(server_name) -- default handler (optional)
+  function(server_name) -- デフォルトの設定
     require("lspconfig")[server_name].setup({
       on_attach = on_attach,
     })
   end,
-  -- Next, you can provide a dedicated handler for specific servers.
-  -- For example, a handler override for the `rust_analyzer`:
+  -- TODO: デフォルト以外の設定は個別に設定する
   -- ["rust_analyzer"] = function ()
   --     require("rust-tools").setup {}
   -- end

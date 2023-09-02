@@ -1,5 +1,3 @@
-local navic = require("nvim-navic")
-
 local lsp_names = function()
   local clients = {}
   for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
@@ -16,29 +14,18 @@ local lsp_names = function()
   return " " .. table.concat(clients, ", ")
 end
 
+local navic = require("nvim-navic")
+
 require("lualine").setup({
   options = {
-    theme = "onedark",
+    theme = "auto",
   },
   sections = {
-    lualine_a = {
-      "mode",
-    },
-    lualine_c = {
-      {
-        function()
-          return navic.get_location()
-        end,
-        cond = function()
-          return navic.is_available()
-        end,
-      },
-    },
-    lualine_x = { lsp_names() },
-    lualine_y = { "encoding", "fileformat", "filetype" },
+    lualine_a = { "mode" },
+    lualine_x = { lsp_names },
+    lualine_y = { "fileformat", "filetype" },
     lualine_z = { "progress", "location" },
   },
-  -- OR in winbar
   winbar = {
     lualine_c = {
       {
@@ -50,5 +37,6 @@ require("lualine").setup({
         end,
       },
     },
+    lualine_y = { "encoding" },
   },
 })

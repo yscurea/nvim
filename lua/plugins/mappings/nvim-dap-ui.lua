@@ -1,10 +1,10 @@
 return {
   n = {
-    ['<leader>d'] = {
+    ["<leader>dd"] = {
       function()
         require("dapui").toggle()
       end,
-      "dap UIの起動"
-    }
-  }
+      "dap UIの起動",
+    },
+  },
 }

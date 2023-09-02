@@ -1,33 +1,33 @@
 return {
   n = {
-    ['<F5>'] = {':DapContinue<CR>', "デバッグ実行"},
-    ['<F10>'] = {':DapStepOver<CR>', ""},
-    ['<F11>'] = {':DapStepInto<CR>', ""},
-    ['<F12>'] = {':DapStepOut<CR>', ""},
-    ['<leader>B']= {':DapToggleBreakpoint<CR>', ""},
-    ["<leader>BB"]= {
-      function ()
-       require("dap").set_breakpoint(nil, nil, vim.fn.input("Breakpoint condition: "))
+    ["<F5>"] = { ":DapContinue<CR>", "デバッグ実行" },
+    ["<F10>"] = { ":DapStepOver<CR>", "" },
+    ["<F11>"] = { ":DapStepInto<CR>", "" },
+    ["<F12>"] = { ":DapStepOut<CR>", "" },
+    ["<leader>B"] = { ":DapToggleBreakpoint<CR>", "" },
+    ["<leader>BB"] = {
+      function()
+        require("dap").set_breakpoint(nil, nil, vim.fn.input("Breakpoint condition: "))
       end,
-      "ブレークポイントセット"
+      "ブレークポイントセット",
     },
-    ['<leader>lp'] = {
-      function ()
+    ["<leader>lp"] = {
+      function()
         require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end,
-      "ブレークポイントセット"
+      "ブレークポイントセット",
     },
-    ['<leader>dr'] = {
-      function ()
+    ["<leader>dr"] = {
+      function()
         require("dap").repl.open()
       end,
-      "repl.open"
+      "repl.open",
     },
-    ['<leader>dl'] = {
-      function ()
+    ["<leader>dl"] = {
+      function()
         require("dap").run_last()
       end,
-      "run_last"
+      "run_last",
     },
-  }
+  },
 }

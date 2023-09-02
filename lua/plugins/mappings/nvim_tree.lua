@@ -7,6 +7,6 @@ return {
     ["<leader>E"] = {
       "<cmd> NvimTreeToggle <CR>",
       "ファイルツリーを開閉",
-    }
-  }
+    },
+  },
 }
