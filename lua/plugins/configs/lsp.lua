@@ -39,6 +39,7 @@ local sources = {
 
   -- for all
   null_ls.builtins.completion.spell,
+  null_ls.builtins.diagnostics.markdownlint,
   -- null_ls.builtins.diagnostics.cspell.with({
   --   diagnostics_postprocess = function(diagnostic)
   --     -- レベルをWARNに変更（デフォルトはERROR）
