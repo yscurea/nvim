@@ -6,6 +6,14 @@ local plugins = {
   },
 
   {
+    "nvim-tree/nvim-web-devicons",
+    lazy = true,
+    config = function()
+      require("plugins.configs.nvim-web-devicons")
+    end,
+  },
+
+  {
     "catppuccin/nvim",
     lazy = false,
     name = "catppuccin",
@@ -30,11 +38,14 @@ local plugins = {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus" },
     init = function()
-      local mappings = require("plugins.mappings.nvim_tree")
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+      vim.opt.termguicolors = true
+      local mappings = require("plugins.mappings.nvim-tree")
       require("core.utils").load_mappings(mappings)
     end,
     config = function()
-      local options = require("plugins.configs.nvim_tree")
+      local options = require("plugins.configs.nvim-tree")
       require("nvim-tree").setup(options)
     end,
     dependencies = {
@@ -152,7 +163,7 @@ local plugins = {
         "onsails/lspkind.nvim",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         -- "folke/neodev.nvim", -- neovim開発者は入れておくといい
-        -- {'rafamadriz/friendly-snippets', event = 'InsertEnter'},
+        { "rafamadriz/friendly-snippets", event = "InsertEnter" },
       },
     },
     config = function()
@@ -188,11 +199,12 @@ local plugins = {
       require("plugins.configs.telescope")
     end,
     dependencies = {
-      "nvim-telescope/telescope-live-grep-args.nvim",
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
+      "nvim-treesitter/nvim-treesitter",
       "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
     },
   },
 
@@ -277,14 +289,24 @@ local plugins = {
     keys = { ":" },
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        config = function()
+          require("notify").setup({
+            render = "compact",
+          })
+        end,
+      },
     },
     config = function()
-      require("noice").setup({
-        messages = {
-          view_search = "mini",
-        },
-      })
+      require("plugins.configs.noice")
+    end,
+  },
+
+  {
+    "aznhe21/actions-preview.nvim",
+    config = function()
+      vim.keymap.set({ "v", "n" }, "<leader>fc", require("actions-preview").code_actions)
     end,
   },
 
@@ -445,27 +467,12 @@ local plugins = {
   {
     "dart-lang/dart-vim-plugin",
     ft = "dart",
-    config = function()
-      vim.g.dart_format_on_save = true
-    end,
   },
 
   { -- mdのテーブルを楽に書く
     "dhruvasagar/vim-table-mode",
     ft = "md",
   },
-
-  -- {
-  --   "linux-cultist/venv-selector.nvim",
-  --   dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
-  --   ft = "py",
-  --   keys = { {
-  --     "<leader>vs",
-  --     "<cmd>:VenvSelect<cr>",
-  --     "<leader>vc",
-  --     "<cmd>:VenvSelectCached<cr>",
-  --   } },
-  -- },
 }
 
 return plugins

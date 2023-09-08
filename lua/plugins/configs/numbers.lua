@@ -1,4 +1,4 @@
--- TODO: NvimTree非表示
+-- 行番号の非表示を行うfiletype列挙
 vim.g.numbers_exclude = {
   "tagbar",
   "NvimTree",

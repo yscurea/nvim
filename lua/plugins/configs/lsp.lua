@@ -38,18 +38,18 @@ local sources = {
   null_ls.builtins.diagnostics.eslint,
 
   -- for all
-  null_ls.builtins.completion.spell,
   null_ls.builtins.diagnostics.markdownlint,
-  -- null_ls.builtins.diagnostics.cspell.with({
-  --   diagnostics_postprocess = function(diagnostic)
-  --     -- レベルをWARNに変更（デフォルトはERROR）
-  --     diagnostic.severity = vim.diagnostic.severity["WARN"]
-  --   end,
-  --   condition = function()
-  --     -- cspellが実行できるときのみ有効
-  --     return vim.fn.executable('cspell') > 0
-  --   end
-  -- })
+  null_ls.builtins.formatting.prettier,
+  null_ls.builtins.diagnostics.cspell.with({
+    diagnostics_postprocess = function(diagnostic)
+      -- レベルをWARNに変更（デフォルトはERROR）
+      diagnostic.severity = vim.diagnostic.severity["WARN"]
+    end,
+    condition = function()
+      -- cspellが実行できるときのみ有効
+      return vim.fn.executable("cspell") > 0
+    end,
+  }),
 }
 null_ls.setup({ sources = sources })
 
@@ -63,6 +63,8 @@ local navic = require("nvim-navic")
 local navbuddy = require("nvim-navbuddy")
 local format_augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+utils.load_mappings(mappings)
+
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentFormattingProvider then
     vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = bufnr })
@@ -74,7 +76,6 @@ local on_attach = function(client, bufnr)
       end,
     })
   end
-  utils.load_mappings(mappings, { buffer = bufnr })
   navic.attach(client, bufnr)
   navbuddy.attach(client, bufnr)
 end

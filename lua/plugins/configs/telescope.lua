@@ -31,10 +31,20 @@ local options = {
         },
       },
     },
+    file_browser = {
+      theme = "ivy",
+      hijack_netrw = false,
+      mappings = {
+        -- INFO: custom mappings.
+      },
+    },
   },
 }
 
-require("telescope").setup(options)
-for key, _ in ipairs(options.extensions) do
-  require("telescope").load_extension(key)
-end
+telescope = require("telescope")
+
+telescope.setup(options)
+
+telescope.load_extension("file_browser")
+telescope.load_extension("ui-select")
+telescope.load_extension("live_grep_args")
