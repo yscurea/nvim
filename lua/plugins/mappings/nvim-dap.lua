@@ -4,7 +4,7 @@ return {
     ["<F10>"] = { ":DapStepOver<CR>", "" },
     ["<F11>"] = { ":DapStepInto<CR>", "" },
     ["<F12>"] = { ":DapStepOut<CR>", "" },
-    ["<leader>B"] = { ":DapToggleBreakpoint<CR>", "" },
+    -- ["<leader>B"] = { ":DapToggleBreakpoint<CR>", "" },
     ["<leader>BB"] = {
       function()
         require("dap").set_breakpoint(nil, nil, vim.fn.input("Breakpoint condition: "))

@@ -1,12 +1,12 @@
 return {
-  -- n = {
-  --   ["<leader>/"] = {
-  --     function()
-  --       require("Comment.api").toggle.linewise.current()
-  --     end,
-  --     "Toggle comment",
-  --   },
-  -- },
+  n = {
+    ["<leader>/"] = {
+      function()
+        require("Comment.api").toggle.linewise.current()
+      end,
+      "コメントアウト着脱",
+    },
+  },
 
   v = {
     ["<leader>/"] = {

@@ -36,7 +36,7 @@ local plugins = {
 
   { -- ファイルツリー
     "nvim-tree/nvim-tree.lua",
-    cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus" },
+    cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
     init = function()
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
@@ -54,7 +54,7 @@ local plugins = {
   },
 
   { -- 構文解析によるハイライト
-    -- INFO: windowsではgccに依存している、適宜インストール
+    -- INFO: gccに依存している、適宜インストール
     "nvim-treesitter/nvim-treesitter",
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
     build = ":TSUpdate",
@@ -96,7 +96,7 @@ local plugins = {
         "williamboman/mason.nvim",
         cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
       },
-      {
+      { -- INFO: アーカイブ化されていることに注意
         "jose-elias-alvarez/null-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
       },
@@ -163,7 +163,6 @@ local plugins = {
         "onsails/lspkind.nvim",
         "hrsh7th/cmp-nvim-lsp-signature-help",
         -- "folke/neodev.nvim", -- neovim開発者は入れておくといい
-        { "rafamadriz/friendly-snippets", event = "InsertEnter" },
       },
     },
     config = function()
@@ -394,6 +393,18 @@ local plugins = {
     end,
   },
 
+  {
+    "kazhala/close-buffers.nvim",
+    key = { "<leader>x", "<leader>X" },
+    init = function()
+      local mappings = require("plugins.mappings.close-buffers")
+      require("core.utils").load_mappings(mappings)
+    end,
+    config = function()
+      require("close_buffers").setup()
+    end,
+  },
+
   { -- markした行を行番号の左にサイン
     "chentoast/marks.nvim",
     keys = { "m" },
@@ -409,6 +420,7 @@ local plugins = {
     },
     config = function()
       require("gitsigns").setup({})
+      require("scrollbar").setup({})
       require("scrollbar.handlers.gitsigns").setup({})
       require("scrollbar.handlers.search").setup({})
     end,
@@ -455,7 +467,6 @@ local plugins = {
       "FlutterSuper",
       "FlutterReanalyze",
     },
-    ft = "dart",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
@@ -472,6 +483,17 @@ local plugins = {
   { -- mdのテーブルを楽に書く
     "dhruvasagar/vim-table-mode",
     ft = "md",
+  },
+
+  {
+    "MunifTanjim/prettier.nvim",
+    event = "LspAttach",
+    ft = "md",
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "jose-elias-alvarez/null-ls.nvim",
+    },
+    config = true,
   },
 }
 

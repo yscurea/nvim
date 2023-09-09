@@ -1,7 +1,7 @@
 return {
   n = {
     ["<leader>e"] = {
-      "<cmd> NvimTreeFocus <CR>",
+      "<cmd> NvimTreeFindFile <CR>",
       "ファイルツリーを開く",
     },
     ["<leader>E"] = {

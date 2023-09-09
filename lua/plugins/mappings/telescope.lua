@@ -16,7 +16,7 @@ return {
     ["<leader>fgy"] = { "<cmd> Telescope git_branches <CR>", "Git branches list" },
 
     -- colorscheme
-    ["<leader>co"] = { "<cmd> Telescope colorscheme <CR>", "themes" },
+    ["<leader>co"] = { "<cmd> Telescope colorscheme <CR>", "themes検索" },
 
     ["<leader>fm"] = { "<cmd> Telescope marks <CR>", "ブクマ検索" },
   },
