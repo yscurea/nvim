@@ -19,7 +19,7 @@ local plugins = {
     name = "catppuccin",
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme catppuccin]])
+      vim.cmd([[colorscheme catppuccin-frappe]])
     end,
   },
 
@@ -444,11 +444,6 @@ local plugins = {
     config = true,
   },
 
-  { -- Rust開発環境用
-    "simrat39/rust-tools.nvim",
-    ft = { "rs" },
-  },
-
   { -- Flutterのコマンドバインディング
     "akinsho/flutter-tools.nvim",
     cmd = {
@@ -494,6 +489,14 @@ local plugins = {
       "jose-elias-alvarez/null-ls.nvim",
     },
     config = true,
+  },
+
+  { -- Rust開発環境用
+    "simrat39/rust-tools.nvim",
+    ft = { "rust" },
+    config = function()
+      require("plugins.configs.rust-tools")
+    end,
   },
 }
 

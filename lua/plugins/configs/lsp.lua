@@ -1,5 +1,9 @@
 -- LSP関係についてはよくまとまっているサイトがある： https://zenn.dev/futsuuu/articles/3b74a8acec166e
 
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "single",
+})
+
 -- mason setup
 require("mason").setup({
   ensure_installed = { "lua" },
@@ -40,6 +44,7 @@ local sources = {
   -- for all
   null_ls.builtins.diagnostics.markdownlint,
   null_ls.builtins.formatting.prettier,
+  null_ls.builtins.code_actions.cspell,
   null_ls.builtins.diagnostics.cspell.with({
     diagnostics_postprocess = function(diagnostic)
       -- レベルをWARNに変更（デフォルトはERROR）

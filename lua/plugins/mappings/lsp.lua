@@ -77,7 +77,7 @@ return {
       "Goto next",
     },
 
-    ["<leader>q"] = {
+    ["<leader>Q"] = {
       function()
         vim.diagnostic.setloclist()
       end,

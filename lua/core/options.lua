@@ -8,6 +8,7 @@ g.plugin_cache_dir = vim.fn.stdpath("data") .. "/lazy"
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.editorconfig = true
+-- g.directory = vim.fn.stdpath("data")
 
 -------------------------------------- options ------------------------------------------
 opt.autoread = true
