@@ -1,9 +1,11 @@
+local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+local sep = is_windows and "\\" or "/"
 local opt = vim.opt
 local g = vim.g
 
 -------------------------------------- globals -----------------------------------------
 g.mapleader = " "
-g.plugin_cache_dir = vim.fn.stdpath("data") .. "/lazy"
+g.plugin_cache_dir = vim.fn.stdpath("data") .. sep .. "lazy"
 -- disable netrw
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
@@ -57,7 +59,6 @@ for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
 end
 
 -- mason.nvimによってインストールされたバイナリをパスに追加
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin" .. (is_windows and ";" or ":") .. vim.env.PATH
 
 -- 使用するターミナルをcmdではなくpowershellに変更する
@@ -94,4 +95,4 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-vim.api.nvim_create_user_command("OpenVimrc", "<cmd>e ~/.config/nvim/init.lua", {})
+-- vim.api.nvim_create_user_command("OpenVimrc", "<cmd>e ~/.config/nvim/init.lua", {})
