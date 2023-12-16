@@ -1,8 +1,8 @@
 return {
   "olimorris/onedarkpro.nvim",
-  lazy = false,
+  lazy = true,
   priority = 1000,
   config = function()
-    vim.cmd([[colorscheme onedark]])
+    -- vim.cmd([[colorscheme onedark]])
   end,
 }

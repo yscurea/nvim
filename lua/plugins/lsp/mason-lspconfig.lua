@@ -20,7 +20,6 @@ return {
       navbuddy.attach(client, bufnr)
     end
 
-    -- LSP server 設定
     require("mason-lspconfig").setup_handlers({
       function(server_name) -- デフォルトの設定
         require("lspconfig")[server_name].setup({
@@ -28,9 +27,16 @@ return {
         })
       end,
       -- TODO: デフォルト以外の設定は個別に設定する
-      -- ["rust_analyzer"] = function ()
-      --     require("rust-tools").setup {}
-      -- end
+      ["ruff_lsp"] = function()
+        require("lspconfig").ruff_lsp.setup({
+          -- on_attach = on_attach,
+          init_option = {
+            settings = {
+              args = {},
+            }
+          }
+        })
+      end,
     })
   end,
 }

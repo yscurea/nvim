@@ -105,11 +105,23 @@ local mappings = {
       end,
       "List workspace folders",
     },
+
+    ["<leader>lf"] = {
+      function()
+        vim.lsp.buf.format()
+      end,
+      "format",
+    }
   },
 }
 
+
 return {
   "neovim/nvim-lspconfig",
+  event = "BufReadPost",
+  dependencies = {
+    "folke/neoconf.nvim",
+  },
   config = function()
     require("core.utils").load_mappings(mappings)
 
@@ -120,12 +132,14 @@ return {
     -- INFO: dependencies efm-langserver
     -- scoop install go
     -- go install github.com/mattn/efm-langserver@latest
+
     require("lspconfig").efm.setup({
-      init_options = { documentFormatting = true },
+      init_options = { documentFormatting = true, codeAction = false },
       filetypes = {
         "python",
         "lua",
         "javascript",
+        "markdown",
       },
       settings = {
         rootMakers = { ".git/" },
@@ -134,11 +148,29 @@ return {
             { formatCommand = "lua-format -i", formatStdin = true },
           },
           python = {
-            { formatCommand = "black --quiet -", formatStdin = true },
+            { formatCommand = "ruff check --fix ${INPUT}" },
+            { formatCommand = "black --quiet --safe ${INPUT}" },
+            {
+              lintCommand = "mypy --show-column-numbers --strict --strict-equality",
+              lintFormats = { "%f:%l:%c: %t%*[^:]: %m" },
+              lintSource = "mypy",
+              lintStdin = true,
+            },
           },
+          markdown = {
+            { formatCommand = "prettier --stdin-filepath -", formatStdin = true },
+          }
         },
       },
     })
 
+    vim.api.nvim_create_autocmd(
+      { "BufWritePre" },
+      {
+        callback = function()
+          vim.lsp.buf.format()
+        end
+      }
+    )
   end
 }

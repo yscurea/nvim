@@ -70,7 +70,7 @@ return {
         },
       },
     }
-    telescope = require("telescope")
+    local telescope = require("telescope")
     telescope.setup(options)
     telescope.load_extension("file_browser")
     telescope.load_extension("ui-select")
