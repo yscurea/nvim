@@ -16,6 +16,9 @@ return {
       },
       notify = {
         enabled = true,
+        view = "notify",
+        render = "wrapped-compact",
+        max_width = 95,
       },
     })
   end,
