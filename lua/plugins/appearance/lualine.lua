@@ -20,6 +20,10 @@ return {
     require("lualine").setup({
       options = {
         theme = "auto",
+        disabled_filetypes = {
+          statusline = { "packer", "NvimTree" },
+          winbar = { "packer", "NvimTree" },
+        }
       },
       sections = {
         lualine_a = { "mode" },
