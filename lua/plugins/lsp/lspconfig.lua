@@ -145,13 +145,6 @@ return {
       settings = {
         rootMakers = { ".git/" },
         language = {
-          cpp = {
-            {
-              lintCommand = "cspell ${INPUT}",
-              lintStdin = true,
-              lintFormats = { '%f:%l:%c %m' }
-            }
-          },
           lua = {
             { formatCommand = "lua-format -i", formatStdin = true },
           },
