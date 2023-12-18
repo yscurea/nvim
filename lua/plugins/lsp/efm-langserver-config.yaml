@@ -71,16 +71,17 @@ tools:
     lint-command: 'checkmake'
     lint-stdin: true
 
+  markdown-format: &markdown-format
+    format-command: "pandoc -f markdown --to=markdown --tab-stop=2 -t gfm -sp"
+    format-stdin: true
+
   markdown-markdownlint: &markdown-markdownlint
-    lint-command: 'markdownlint -s -c %USERPROFILE%\.markdownlintrc'
+    lint-command: "markdownlint -s -c ~/.config/.markdownlintrc"
     lint-stdin: true
     lint-formats:
       - '%f:%l %m'
       - '%f:%l:%c %m'
       - '%f: %l: %m'
-
-  markdown-pandoc: &markdown-pandoc
-    format-command: 'pandoc -f markdown -t gfm -sp --tab-stop=2'
 
   mix_credo: &mix_credo
     lint-command: "mix credo suggest --format=flycheck --read-from-stdin ${INPUT}"
@@ -243,8 +244,8 @@ languages:
     - <<: *make-checkmake
 
   markdown:
+    - <<: *markdown-format
     - <<: *markdown-markdownlint
-    - <<: *markdown-pandoc
 
   perl:
     - <<: *perl-perltidy

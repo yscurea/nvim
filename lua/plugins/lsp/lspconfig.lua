@@ -148,6 +148,7 @@ return {
             { formatCommand = "lua-format -i", formatStdin = true },
           },
           python = {
+            -- INFO: poetry add ruff black mypy --dev
             { formatCommand = "ruff check --fix ${INPUT}" },
             { formatCommand = "black --quiet --safe ${INPUT}" },
             {
@@ -158,9 +159,21 @@ return {
             },
           },
           markdown = {
-            { formatCommand = "prettier --stdin-filepath -", formatStdin = true },
-          }
-        },
+            { -- INFO: scoop install pandoc
+              formatCommand = "pandoc -f markdown --to=markdown --tab-stop=2 -t gfm -sp",
+              formatStdin = true,
+            },
+            { -- INFO: install markdownlint with Mason.
+              lintCommand = "markdownlint -s -c ~/.config/.markdownlintrc",
+              lintStdin = true,
+              lintFormats = {
+                '%f:%l %m',
+                '%f:%l:%c %m',
+                '%f: %l: %m',
+              },
+            }
+          },
+        }
       },
     })
 
