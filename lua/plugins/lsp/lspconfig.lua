@@ -136,11 +136,9 @@ return {
     require("lspconfig").efm.setup({
       init_options = { documentFormatting = true, codeAction = false },
       filetypes = {
-        "python",
         "lua",
-        "javascript",
+        "python",
         "markdown",
-        "*",
       },
       settings = {
         rootMakers = { ".git/" },
