@@ -26,7 +26,10 @@ return {
           on_attach = on_attach,
         })
       end,
-      -- TODO: デフォルト以外の設定は個別に設定する
+      -- INFO: デフォルト以外の設定は個別に設定する
+      ["typos_lsp"] = function()
+        require("lspconfig").typos_lsp.setup({})
+      end,
       ["ruff_lsp"] = function()
         require("lspconfig").ruff_lsp.setup({
           -- on_attach = on_attach,
