@@ -1,0 +1,126 @@
+[
+	{
+		"key": "alt+l",
+		"command": "workbench.action.terminal.toggleTerminal",
+		"when": "terminal.active"
+	},
+	{
+		"key": "shift+k",
+		"command": "editor.debug.action.showDebugHover",
+		"when": "editorTextFocus && inDebugMode && vim.mode != 'Insert' && neovim.mode != insert"
+	},
+	{
+		"key": "shift+k",
+		"command": "editor.action.showHover",
+		"when": "editorTextFocus && vim.mode != 'Insert' && neovim.mode != insert"
+	},
+	{
+		"key": "F9",
+		"command": "workbench.action.tasks.runTask",
+		"args": "Run Bat"
+	},
+	{
+		"key": "r",
+		"command": "renameFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "enter",
+		"command": "-renameFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "shift+ctrl+n",
+		"command": "explorer.newFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "shift+ctrl+m",
+		"command": "explorer.newFolder",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "v",
+		"command": "explorer.openToSide",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "d",
+		"command": "deleteFile",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "c",
+		"command": "filesExplorer.copy",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "x",
+		"command": "filesExplorer.cut",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "p",
+		"command": "filesExplorer.paste",
+		"when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+	},
+	{
+		"key": "ctrl+shift+y",
+		"command": "workbench.debug.action.toggleRepl",
+		"when": "workbench.panel.repl.view.active"
+	},
+	{
+		"key": "ctrl+shift+alt+y",
+		"command": "-workbench.debug.action.toggleRepl",
+		"when": "workbench.panel.repl.view.active"
+	},
+	{
+		"key": "f10",
+		"command": "workbench.action.nextEditorInGroup",
+		"when": "editorFocus && !activeEditorGroupEmpty && !hasGPT4Diff && neovim.mode != 'insert'"
+	},
+	{
+		"key": "shift+tab",
+		"command": "workbench.action.previousEditorInGroup",
+		"when": "!activeEditorGroupEmpty && neovim.mode != insert && editorFocus"
+	},
+	{
+		"key": "tab",
+		"command": "workbench.action.nextEditorInGroup",
+		"when": "!activeEditorGroupEmpty && neovim.mode != insert && editorFocus"
+	},
+	{
+		"key": "ctrl+w",
+		"command": "workbench.action.closeActiveEditor"
+	},
+	{
+		"key": "ctrl+shift+o",
+		"command": "-workbench.action.gotoSymbol",
+		"when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+	},
+	{
+		"key": "ctrl+shift+o",
+		"command": "aipopup.action.modal.generate",
+		"when": "editorFocus"
+	},
+	{
+		"key": "ctrl+k",
+		"command": "-aipopup.action.modal.generate",
+		"when": "editorFocus"
+	},
+	{
+		"key": "F12",
+		"command": "workbench.action.tasks.runTask",
+		"args": "Run build_runner for current file"
+	},
+	{
+		"key": "ctrl+oem_period",
+		"command": "editor.action.quickFix",
+		"when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+oem_period",
+		"command": "-editor.action.quickFix",
+		"when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+	}
+]

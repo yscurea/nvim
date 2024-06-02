@@ -1,0 +1,19 @@
+{
+	"vscode-neovim.neovimInitVimPaths.win32": "<Your path to init.lua>",
+	"vscode-neovim.neovimInitVimPaths.darwin": "<Your path to init.lua>",
+	"vscode-neovim.neovimInitVimPaths.linux": "<Your path to init.lua>",
+	"vscode-neovim.compositeKeys": {
+		"jk": {
+			"command": "vscode-neovim.escape"
+		},
+		"kj": {
+			"command": "vscode-neovim.escape"
+		},
+		"kk": {
+			"command": "vscode-neovim.escape"
+		},
+		"jj": {
+			"command": "vscode-neovim.escape"
+		}
+	}
+}
