@@ -1,14 +1,19 @@
 local mappings = {
   n = {
-    ["<Leader>z"] = { ":ZenMode<CR>", "禅" },
+    ["<Leader>z"] = { function()
+      require("zen-mode").toggle()
+    end, "Toggle ZenMode" },
   }
 }
 
 return {
   "folke/zen-mode.nvim",
   lazy = true,
-  cmd = { "ZenMode" },
-  init = function()
+  keys = {
+    { "<Leader>z", mode = "n", desc = "Toggle ZenMode" },
+  },
+  config = function()
+    require("zen-mode").setup()
     require("core.utils").load_mappings(mappings)
   end,
 }

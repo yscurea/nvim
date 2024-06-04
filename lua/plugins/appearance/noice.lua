@@ -1,8 +1,8 @@
 -- リッチな通知とコマンドラインの中央表示
 return {
   "folke/noice.nvim",
-  keys = { ":" },
   lazy = true,
+  keys = { ":", "/" },
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
@@ -22,7 +22,7 @@ return {
           search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
           filter = { pattern = "^:%s*!", icon = "$", lang = "bash" },
           lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "", lang = "lua" },
-          help = { pattern = "^:%s*he?l?p?%s+", icon = "" },
+          help = { pattern = "^:%s*he?l?p?%s+", icon = "?" },
           input = {},
         },
       },
@@ -36,7 +36,6 @@ return {
       },
       popupmenu = {
         enabled = true,
-        ---@type 'nui'|'cmp'
         backend = "nui",
         kind_icons = {},
       },
@@ -85,12 +84,12 @@ return {
         },
       },
       notify = {
-        enabled = true,
+        enabled = false,
         view = "notify",
       },
       lsp = {
         progress = {
-          enabled = true,
+          enabled = false,
           format = "lsp_progress",
           format_done = "lsp_progress_done",
           throttle = 1000 / 30,
@@ -119,7 +118,7 @@ return {
           opts = {},
         },
         message = {
-          enabled = true,
+          enabled = false,
           view = "notify",
           opts = {},
         },
@@ -134,37 +133,30 @@ return {
           },
         },
       },
-      markdown = {
-        hover = {
-          ["|(%S-)|"] = vim.cmd.help,
-          ["%[.-%]%((%S-)%)"] = require("noice.util").open,
-        },
-        highlights = {
-          ["|%S-|"] = "@text.reference",
-          ["@%S+"] = "@parameter",
-          ["^%s*(Parameters:)"] = "@text.title",
-          ["^%s*(Return:)"] = "@text.title",
-          ["^%s*(See also:)"] = "@text.title",
-          ["{%S-}"] = "@parameter",
-        },
-      },
       health = {
         checker = true,
       },
-      smart_move = {
-        enabled = true,
-        excluded_filetypes = { "cmp_menu", "cmp_docs", "notify" },
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+            find = "written",
+          },
+          opts = { skip = true }
+        },
+        {
+          filter = {
+            event = "lsp",
+            kind = "progress",
+            cond = function(message)
+              local client = vim.tbl_get(message.opts, "progress", "client")
+              return client == "lua_ls"
+            end,
+          },
+          opts = { skip = true },
+        },
       },
-      presets = {
-        bottom_search = true,
-        command_palette = true,
-        long_message_to_split = false,
-        inc_rename = false,
-        lsp_doc_border = true,
-      },
-      throttle = 1000 / 30,
-      views = {},
-      routes = {},
       status = {},
       format = {},
     })

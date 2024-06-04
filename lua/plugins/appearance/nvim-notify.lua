@@ -4,7 +4,10 @@ return {
   config = function()
     require("notify").setup({
       background_colour = "#000000",
-      render = "compact",
+      render = "wrapped-compact",
+      top_down = false,
+      max_width = 200,
+      stages = "fade",
     })
   end,
   cond = function()

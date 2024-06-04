@@ -49,12 +49,12 @@ local mappings = {
       "LSP definition type",
     },
 
-    -- ["<leader>c"] = {
-    --   function()
-    --     vim.lsp.buf.code_action()
-    --   end,
-    --   "LSP code action",
-    -- },
+    ["<leader>lc"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
 
     ["gr"] = {
       function()

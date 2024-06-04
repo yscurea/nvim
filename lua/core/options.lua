@@ -11,6 +11,7 @@ g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 g.editorconfig = true
 -- g.directory = vim.fn.stdpath("data")
+opt.cmdheight = 0
 
 -------------------------------------- options ------------------------------------------
 vim.wo.wrap = false

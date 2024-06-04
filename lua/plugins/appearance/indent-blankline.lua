@@ -1,8 +1,8 @@
--- インデントとか終端文字とかの表示の調節する
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",
   lazy = true,
+  event = "BufEnter",
   opts = {
     enabled = true,
     exclude = {
@@ -24,5 +24,7 @@ return {
       show_start = false,
     },
   },
-  event = "VimEnter",
+  config = function()
+    require("ibl").setup()
+  end,
 }

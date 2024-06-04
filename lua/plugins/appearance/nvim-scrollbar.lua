@@ -7,6 +7,9 @@ local mappings = {
 return {
   "petertriho/nvim-scrollbar",
   lazy = true,
+  keys = {
+    { "<leader>st", mode = "n", desc = "Toggle scrollbar" },
+  },
   cmd = {
     "ScrollbarShow",
     "ScrollbarHide",
@@ -17,13 +20,11 @@ return {
     { "lewis6991/gitsigns.nvim" },
   },
   config = function()
+    require("core.utils").load_mappings(mappings)
     require("gitsigns").setup({})
     require("scrollbar").setup({})
     require("scrollbar.handlers.gitsigns").setup({})
     require("scrollbar.handlers.search").setup({})
-  end,
-  init = function()
-    require("core.utils").load_mappings(mappings)
   end,
   cond = function()
     return vim.g.vscode == nil
