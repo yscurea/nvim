@@ -1,7 +1,7 @@
 -- コメントアウトショートカット
 local mappings = {
   n = {
-    ["<leader>/"] = {
+    ["<Leader>/"] = {
       function()
         require("Comment.api").toggle.linewise.current()
       end,
@@ -9,7 +9,7 @@ local mappings = {
     },
   },
   v = {
-    ["<leader>/"] = {
+    ["<Leader>/"] = {
       "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
       "コメントアウト着脱",
     },

@@ -7,9 +7,6 @@ return {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
   },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   config = function()
     require("noice").setup({
       cmdline = {
@@ -27,12 +24,12 @@ return {
         },
       },
       messages = {
-        enabled = true,
+        enabled = false,
         view = "notify",
         view_error = "notify",
         view_warn = "notify",
         view_history = "messages",
-        view_search = "virtualtext",
+        view_search = "virtualtext", -- instead hlsl
       },
       popupmenu = {
         enabled = true,
@@ -84,7 +81,7 @@ return {
         },
       },
       notify = {
-        enabled = false,
+        enabled = true,
         view = "notify",
       },
       lsp = {
@@ -118,7 +115,7 @@ return {
           opts = {},
         },
         message = {
-          enabled = false,
+          enabled = true,
           view = "notify",
           opts = {},
         },

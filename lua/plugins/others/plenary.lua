@@ -1,4 +1,4 @@
--- 構成ファイルを編集したときにリロードするため
+-- utils
 return {
   "nvim-lua/plenary.nvim",
   lazy = false,

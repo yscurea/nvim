@@ -12,7 +12,7 @@ return {
 
     ["<Leader>ww"] = { ":w<CR>", "ファイル保存" },
     ["<Leader>wa"] = { ":wa<CR>", "全ファイル保存" },
-    ["<leader>q"] = { ":q<CR>", "ウィンドウを閉じる" },
+    ["<Leader>q"] = { ":q<CR>", "ウィンドウを閉じる" },
     ["yd"] = { '"_d', "ヤンクせずに削除" },
     ["yc"] = { '"_c', "ヤンクせずに削除" },
 
@@ -42,9 +42,18 @@ return {
     ["<C-k>"] = { "-", "一行上に" },
     ["zj"] = { "zt", "カーソルを画面最上部に" },
     ["zk"] = { "zb", "カーソルを画面最下部に" },
-    ["+"] = { "<C-a>", "インクリメント" },
-    ["-"] = { "<C-x>", "デクリメント" },
-    ["<Leader>re"] = { ":%s;\\<<C-R><C-W>\\>;g<Left><Left>;", "置換" },
+    ["+"] = { "<C-a>", "Increment" },
+    ["-"] = { "<C-x>", "Decrement" },
+    ["<Leader>re"] = { ":%s;\\<<C-R><C-W>\\>;g<Left><Left>;", "Replace" },
+    ["<Leader>p"] = { '"0p', "paste 0 register" },
+    ["<Leader><Leader>"] = { "<C-^>", "Toggle between previous file and current file." },
+    ["<Leader>n"] = { ":cnext<CR>", "Next quickfix." },
+    ["<Leader>N"] = { ":cprevious<CR>", "Next quickfix." },
+    ["<Leader>gj"] = { "10j", "Next quickfix." },
+    ["<Leader>gk"] = { "10k", "Next quickfix." },
+  },
+  v = {
+    ["<Leader>p"] = { '"0p', "0レジスタをペースト" },
   },
   t = {
     ["<A-j>"] = { "<C-\\><C-n>", "ターミナルノーマルモードへ" },

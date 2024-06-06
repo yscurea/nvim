@@ -1,3 +1,4 @@
+-- 加速jk
 local mapping = {
   n = {
     ["j"] = {

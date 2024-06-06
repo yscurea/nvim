@@ -1,12 +1,12 @@
 -- 下に各種情報表示
-local lsp_names = function()
-  local clients = {}
-  for _, client in ipairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-    table.insert(clients, client.name)
-  end
-  return " " .. table.concat(clients, ", ")
-end
-
+-- local lsp_names = function()
+--   local clients = {}
+--   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+--     table.insert(clients, client.name)
+--   end
+--   return " " .. table.concat(clients, ", ")
+-- end
+--
 
 return {
   "nvim-lualine/lualine.nvim",
@@ -15,12 +15,23 @@ return {
     "nvim-tree/nvim-web-devicons",
     "SmiteshP/nvim-navic",
   },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   lazy = true,
   config = function()
     local navic = require("nvim-navic")
+    local clients_lsp = function()
+      local bufnr = vim.api.nvim_get_current_buf()
+
+      local clients = vim.lsp.buf_get_clients(bufnr)
+      if next(clients) == nil then
+        return ''
+      end
+
+      local c = {}
+      for _, client in pairs(clients) do
+        table.insert(c, client.name)
+      end
+      return table.concat(c, ' ')
+    end
     require("lualine").setup({
       options = {
         theme = "auto",
@@ -31,7 +42,7 @@ return {
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_x = { lsp_names },
+        lualine_x = { clients_lsp },
         lualine_y = { "fileformat", "filetype" },
         lualine_z = { "progress", "location" },
       },

@@ -1,13 +1,13 @@
 -- キーマップのヒント表示
 local mappings = {
   n = {
-    ["<leader>wK"] = {
+    ["<Leader>wK"] = {
       function()
         vim.cmd("WhichKey")
       end,
       "Which-key all keymaps",
     },
-    ["<leader>wk"] = {
+    ["<Leader>wk"] = {
       function()
         local input = vim.fn.input("WhichKey: ")
         vim.cmd("WhichKey " .. input)
@@ -19,7 +19,7 @@ local mappings = {
 
 return {
   "folke/which-key.nvim",
-  keys = { "<leader>", '"', "'", "`", "c", "v", "g" },
+  keys = { "<Leader>", '"', "'", "`", "c", "g", "z" },
   cond = function()
     return vim.g.vscode == nil
   end,

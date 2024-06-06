@@ -1,8 +1,6 @@
 return {
   "rebelot/kanagawa.nvim",
   lazy = true,
-  -- event = "BufReadPost",
-  -- priority = 1000,
   config = function()
     require('kanagawa').setup({
       compile = false,  -- enable compiling the colorscheme
@@ -29,8 +27,5 @@ return {
       },
     })
     vim.cmd([[colorscheme kanagawa]])
-  end,
-  cond = function()
-    return vim.g.vscode == nil
   end,
 }

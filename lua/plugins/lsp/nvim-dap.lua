@@ -4,78 +4,45 @@ local mappings = {
     ["<F10>"] = { ":DapStepOver<CR>", "" },
     ["<F11>"] = { ":DapStepInto<CR>", "" },
     ["<F12>"] = { ":DapStepOut<CR>", "" },
-    -- ["<leader>B"] = { ":DapToggleBreakpoint<CR>", "" },
-    ["<leader>BB"] = {
-      function()
-        require("dap").set_breakpoint(nil, nil, vim.fn.input("Breakpoint condition: "))
-      end,
-      "ブレークポイントセット",
-    },
-    ["<leader>lp"] = {
+    ["<Leader>dB"] = { ":DapToggleBreakpoint<CR>", "" },
+    ["<Leader>dlp"] = {
       function()
         require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end,
       "ブレークポイントセット",
     },
-    ["<leader>dr"] = {
+    ["<Leader>dr"] = {
       function()
         require("dap").repl.open()
       end,
       "repl.open",
     },
-    ["<leader>dl"] = {
+    ["<Leader>dl"] = {
       function()
         require("dap").run_last()
       end,
       "run_last",
     },
-    -- ["<leader>dd"] = {
-    --   function()
-    --     require("dapui").toggle()
-    --   end,
-    --   "dap UIの起動",
-    -- },
   },
 }
 
 return {
   "mfussenegger/nvim-dap",
-  keys = { "<F5>", "<F10>", "<F11>", "<F12>", "<leader>bb", "<leader>B", "<leader>lp", "<leader>dr", "<leader>dl" },
-  init = function()
-    require("core.utils").load_mappings(mappings)
-  end,
+  keys = {
+    { "<F5>",        mode = "n", desc = "Continue" },
+    { "<F10>",       mode = "n", desc = "StepOver" },
+    { "<F11>",       mode = "n", desc = "StepInto" },
+    { "<F12>",       mode = "n", desc = "StepOut" },
+    { "<Leader>dB",  mode = "n", desc = "ToggleBreakpoint" },
+    { "<Leader>dlp", mode = "n", desc = "Set breakpoint" },
+    { "<Leader>dr",  mode = "n", desc = "repl.open" },
+    { "<Leader>dl",  mode = "n", desc = "run_last" },
+  },
   cond = function()
     return vim.g.vscode == nil
   end,
   lazy = true,
-  dependencies = {
-    {
-      "rcarriga/nvim-dap-ui",
-      config = function()
-        require("dapui").setup({
-          icons = { expanded = "", collapsed = "" },
-          layouts = {
-            {
-              elements = {
-                { id = "watches",     size = 0.20 },
-                { id = "stacks",      size = 0.20 },
-                { id = "breakpoints", size = 0.20 },
-                { id = "scopes",      size = 0.40 },
-              },
-              size = 64,
-              position = "right",
-            },
-            {
-              elements = {
-                "repl",
-                "console",
-              },
-              size = 0.20,
-              position = "bottom",
-            },
-          },
-        })
-      end,
-    },
-  },
+  config = function()
+    require("core.utils").load_mappings(mappings)
+  end
 }

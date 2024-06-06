@@ -54,6 +54,8 @@ opt.undofile = true
 -- gitsignsが使用するスワップファイルをディスクに書き込むための間隔
 opt.updatetime = 250
 
+opt.listchars = "tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%"
+
 -- 一部のデフォルトプロバイダーを無効にします
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
@@ -72,3 +74,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
+
+if vim.fn.executable('rg') == 1 then
+  vim.o.grepprg = "rg --vimgrep --hidden --glob ‘!.git’"
+end

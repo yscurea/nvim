@@ -1,4 +1,4 @@
--- 構文解析によるハイライト
+-- 構文解析
 
 -- INFO:
 -- dependencies gcc

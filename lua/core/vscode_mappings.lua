@@ -178,5 +178,14 @@ return {
     ["+"] = { "<C-a>", "インクリメント" },
     ["-"] = { "<C-x>", "デクリメント" },
     ["<Leader>re"] = { ":%s;\\<<C-R><C-W>\\>;g<Left><Left>;", "置換" },
+    ["<Leader>p"] = { '"0p', "paste 0 register" },
+    ["<Leader><Leader>"] = { "<C-^>", "Toggle between previous file and current file." },
+    ["<Leader>n"] = { ":cnext<CR>", "Next quickfix." },
+    ["<Leader>N"] = { ":cprevious<CR>", "Next quickfix." },
+    ["<Leader>gj"] = { "10j", "Next quickfix." },
+    ["<Leader>gk"] = { "10k", "Next quickfix." },
+  },
+  v = {
+    ["<Leader>p"] = { '"0p', "0レジスタをペースト" },
   },
 }

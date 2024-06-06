@@ -2,9 +2,6 @@
 return {
   "simrat39/rust-tools.nvim",
   ft = { "rust" },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   config = function()
     require("rust-tools").setup({
       tools = {
@@ -20,9 +17,6 @@ return {
       },
       server = {
         on_attach = function(_, buf)
-          -- Hover actions
-          -- vim.keymap.set("n", "<C-space>", require("rust-tools").hover_actions.hover_actions, { buffer = buf })
-          -- Code action groups
           vim.keymap.set("n", "<Leader>a", require("rust-tools").code_action_group.code_action_group, { buffer = buf })
         end,
       },

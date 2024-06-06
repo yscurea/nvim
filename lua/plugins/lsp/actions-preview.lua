@@ -1,13 +1,11 @@
+-- code action
 return {
   "aznhe21/actions-preview.nvim",
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   keys = {
-    { "<leader>ca", mode = "n", desc = "Action Preview" },
+    { "<Leader>ca", mode = "n", desc = "Action Preview" },
   },
   config = function()
-    vim.keymap.set({ "n" }, "<leader>ca", require("actions-preview").code_actions)
+    vim.keymap.set({ "n" }, "<Leader>ca", require("actions-preview").code_actions)
     require("actions-preview").setup {
       diff = {
         ctxlen = 3,

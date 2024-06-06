@@ -1,25 +1,14 @@
--- File Tree
-local mappings = {
-  n = {
-    ["<leader>e"] = {
-      "<cmd> NvimTreeFindFile <CR>",
-      "ファイルツリーを開く",
-    },
-    ["<leader>E"] = {
-      "<cmd> NvimTreeToggle <CR>",
-      "ファイルツリーを開閉",
-    },
-  },
-}
-
 return {
   "nvim-tree/nvim-tree.lua",
+  keys = {
+    { "<Leader>e", "<cmd> NvimTreeFindFile <CR>", desc = "open file tree", mode = "n" },
+    { "<Leader>E", "<cmd> NvimTreeToggle <CR>",   desc = "Toggle file tree", mode = "n" },
+  },
   cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
   init = function()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
     vim.opt.termguicolors = true
-    require("core.utils").load_mappings(mappings)
   end,
   lazy = true,
   config = function()
@@ -98,6 +87,8 @@ return {
       },
       on_attach = my_on_attach,
     })
+    vim.g.nvim_tree_highlight_opened_files = 1
+    vim.cmd("highlight def link NvimTreeOpenedFolderName NvimTreeOpenedFile")
   end,
   dependencies = {
     "nvim-tree/nvim-web-devicons",

@@ -4,7 +4,4 @@ return {
   cmd = "ColorizerToggle",
   lazy = true,
   config = true,
-  cond = function()
-    return vim.g.vscode == nil
-  end,
 }

@@ -59,7 +59,6 @@ opt.listchars = "tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%"
 
 -- gitsignsが使用するスワップファイルをディスクに書き込むための間隔
 opt.updatetime = 250
-opt.foldtext = vim.treesitter.foldtext
 
 -- 一部のデフォルトプロバイダーを無効にします
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
@@ -101,3 +100,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 -- vim.api.nvim_create_user_command("OpenVimrc", "<cmd>e ~/.config/nvim/init.lua", {})
+--
+-- ripgrepが実行できるならrgコマンドを使わせる
+if vim.fn.executable('rg') == 1 then
+  vim.o.grepprg = "rg --vimgrep --hidden --glob ‘!.git’"
+end

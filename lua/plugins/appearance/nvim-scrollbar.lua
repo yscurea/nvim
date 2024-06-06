@@ -1,14 +1,9 @@
-local mappings = {
-  n = {
-    ["<Leader>st"] = { ":ScrollbarToggle<CR>", "スクロールバーの表示非表示" },
-  }
-}
-
+-- スクロールバーの表示
 return {
   "petertriho/nvim-scrollbar",
   lazy = true,
   keys = {
-    { "<leader>st", mode = "n", desc = "Toggle scrollbar" },
+    { "<Leader>st", ":ScrollbarToggle<CR>", mode = "n", desc = "Toggle scrollbar" },
   },
   cmd = {
     "ScrollbarShow",
@@ -20,7 +15,6 @@ return {
     { "lewis6991/gitsigns.nvim" },
   },
   config = function()
-    require("core.utils").load_mappings(mappings)
     require("gitsigns").setup({})
     require("scrollbar").setup({})
     require("scrollbar.handlers.gitsigns").setup({})

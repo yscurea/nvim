@@ -35,21 +35,21 @@ local mappings = {
       "LSP implementation",
     },
 
-    ["<leader>ls"] = {
+    ["<Leader>ls"] = {
       function()
         vim.lsp.buf.signature_help()
       end,
       "LSP signature help",
     },
 
-    ["<leader>D"] = {
+    ["<Leader>D"] = {
       function()
         vim.lsp.buf.type_definition()
       end,
       "LSP definition type",
     },
 
-    ["<leader>lc"] = {
+    ["<Leader>lc"] = {
       function()
         vim.lsp.buf.code_action()
       end,
@@ -63,7 +63,7 @@ local mappings = {
       "LSP references",
     },
 
-    ["<leader>fl"] = {
+    ["<Leader>fl"] = {
       function()
         vim.diagnostic.open_float({ border = "rounded" })
       end,
@@ -84,35 +84,35 @@ local mappings = {
       "Goto next",
     },
 
-    ["<leader>Q"] = {
+    ["<Leader>Q"] = {
       function()
         vim.diagnostic.setloclist()
       end,
       "Diagnostic setloclist",
     },
 
-    ["<leader>woa"] = {
+    ["<Leader>woa"] = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
       "Add workspace folder",
     },
 
-    ["<leader>wor"] = {
+    ["<Leader>wor"] = {
       function()
         vim.lsp.buf.remove_workspace_folder()
       end,
       "Remove workspace folder",
     },
 
-    ["<leader>wol"] = {
+    ["<Leader>wol"] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
       "List workspace folders",
     },
 
-    ["<leader>FF"] = {
+    ["<Leader>FF"] = {
       function()
         vim.lsp.buf.format()
       end,

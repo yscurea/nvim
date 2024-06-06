@@ -1,27 +1,19 @@
--- bufferを画面上部に表示
-local mappings = {
-  n = {
-    ["<s-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "前バッファへ" },
-    ["<Tab>"] = { "<cmd>BufferLineCycleNext<CR>", "次バッファへ" },
-    ["<Leader>>"] = { "<cmd>BufferLineMoveNext<CR>", "バッファを右に移動" },
-    ["<Leader><"] = { "<cmd>BufferLineMovePrev<CR>", "バッファを左に移動" },
-    ["<Leader>b"] = { "<cmd>BufferLinePick<CR>", "バッファ選択" },
-  },
-}
-
 return {
   "akinsho/bufferline.nvim",
   lazy = true,
   event = "BufAdd",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  keys = {
+    { "<s-Tab>", "<cmd>BufferLineCyclePrev<CR>", desc = "前バッファへ", mode = "n" },
+    { "<Tab>", "<cmd>BufferLineCycleNext<CR>", desc = "次バッファへ", mode = "n" },
+    { "<Leader><", "<cmd>BufferLineMovePrev<CR>", desc = "バッファを左に移動", mode = "n" },
+    { "<Leader>>", "<cmd>BufferLineMoveNext<CR>", desc = "バッファを右に移動", mode = "n" },
+    { "<Leader>b", "<cmd>BufferLinePick<CR>", desc = "バッファ選択", mode = "n" },
+  },
   init = function()
     vim.opt.termguicolors = true
   end,
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   config = function()
-    require("core.utils").load_mappings(mappings)
     require("bufferline").setup({
       options = {
         mode = "buffers",

@@ -6,8 +6,5 @@ return {
     vim.g.mkdp_filetypes = { "markdown" }
   end,
   ft = { "markdown" },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   lazy = true,
 }

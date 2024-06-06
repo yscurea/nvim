@@ -61,13 +61,13 @@ M.lazy_nvim = {
     browser = nil,
     throttle = 20,
     custom_keys = {
-      ["<localleader>l"] = function(plugin)
+      ["<Leader>l"] = function(plugin)
         require("lazy.util").float_term({ "lazygit", "log" }, {
           cwd = plugin.dir,
         })
       end,
 
-      ["<localleader>t"] = function(plugin)
+      ["<Leader>t"] = function(plugin)
         require("lazy.util").float_term(nil, {
           cwd = plugin.dir,
         })

@@ -1,6 +1,16 @@
 -- マルチカーソル
 return {
   "mg979/vim-visual-multi",
-  event = "CursorMoved",
+  keys = {
+    "<C-Down>",
+    "<C-Up>",
+    "<C-n>",
+    "n",
+    "N",
+    "[",
+    "]",
+    "q",
+    "Q",
+  },
   lazy = true,
 }

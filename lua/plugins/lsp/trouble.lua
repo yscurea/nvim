@@ -2,13 +2,16 @@
 local mappings = {
   n = {
     -- find trouble
-    ["<leader>ft"] = { "<cmd> TroubleToggle <CR>", "問題一覧ウィンドウを開く" },
+    ["<Leader>ft"] = { "<cmd> TroubleToggle <CR>", "問題一覧ウィンドウを開く" },
   },
 }
 
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle" },
+  keys = {
+    { "<Leader>ft", "<cmd> TroubleToggle <CR>", desc = "問題一覧ウィンドウを開く", mode = "n" },
+  },
   cond = function()
     return vim.g.vscode == nil
   end,

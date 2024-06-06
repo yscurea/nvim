@@ -1,3 +1,4 @@
+-- 補完
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
@@ -41,7 +42,6 @@ return {
       "hrsh7th/cmp-path",
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      -- "folke/neodev.nvim", -- neovim開発者は入れておくといい
     },
   },
   config = function()
@@ -60,13 +60,7 @@ return {
       }
     end
 
-    local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-    local sep = is_windows and "\\" or "/"
-
     require('luasnip.loaders.from_vscode').lazy_load({ paths = { "~/.config/nvim/my_snippets" } })
-    -- require("luasnip.loaders.from_vscode").lazy_load({
-    --   paths = { "." .. sep .. "snippets" .. sep }
-    -- })
 
     local ls = require("luasnip")
     local s = ls.snippet

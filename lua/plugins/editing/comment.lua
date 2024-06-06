@@ -1,21 +1,4 @@
--- コメントアウトショートカット
-local mappings = {
-  n = {
-    ["<leader>/"] = {
-      function()
-        require("Comment.api").toggle.linewise.current()
-      end,
-      "コメントアウト着脱",
-    },
-  },
-  v = {
-    ["<leader>/"] = {
-      "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      "コメントアウト着脱",
-    },
-  },
-}
-
+-- コメントアウト
 return {
   "numToStr/Comment.nvim",
   keys = {
@@ -26,9 +9,6 @@ return {
     { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
     { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
   },
-  init = function()
-    require("core.utils").load_mappings(mappings)
-  end,
   config = function()
     require("Comment").setup({})
   end,

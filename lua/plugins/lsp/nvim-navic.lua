@@ -1,8 +1,5 @@
 return {
   "SmiteshP/nvim-navic",
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   lazy = true,
   config = function()
     require("nvim-navic").setup({
