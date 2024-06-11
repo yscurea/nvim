@@ -1,5 +1,5 @@
 return {
-  "olimorris/onedarkpro.nvim",
+  "marko-cerovac/material.nvim",
   lazy = true,
   keys = { "<Leader>fco" },
 }

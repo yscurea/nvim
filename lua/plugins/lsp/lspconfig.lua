@@ -2,11 +2,10 @@
 local mappings = {
   n = {
     ["<Leader>rn"] = {
-      function()
-        vim.lsp.buf.rename()
-      end,
+      "<cmd>Lspsaga rename<CR>",
       "LSP rename"
     },
+
     ["gD"] = {
       function()
         vim.lsp.buf.declaration()
@@ -22,9 +21,7 @@ local mappings = {
     },
 
     ["K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
+      "<cmd>Lspsaga hover_doc<CR>",
       "LSP hover",
     },
 
@@ -50,9 +47,7 @@ local mappings = {
     },
 
     ["<Leader>lc"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
+      "<cmd>Lspsaga code_action<CR>",
       "LSP code action",
     },
 
@@ -71,17 +66,19 @@ local mappings = {
     },
 
     ["<Leader>fj"] = {
-      function()
-        vim.diagnostic.goto_next({ float = { border = "rounded" } })
-      end,
-      "Goto prev",
+      -- function()
+      --   vim.diagnostic.goto_next({ float = { border = "rounded" } })
+      -- end,
+      "<cmd>Lspsaga diagnostic_jump_next<CR>",
+      "Goto next",
     },
 
     ["<Leader>fk"] = {
-      function()
-        vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-      end,
-      "Goto next",
+      -- function()
+      --   vim.diagnostic.goto_prev({ float = { border = "rounded" } })
+      -- end,
+      "<cmd>Lspsaga diagnostic_jump_prev<CR>",
+      "Goto prev",
     },
 
     ["<Leader>Q"] = {
@@ -128,6 +125,7 @@ return {
     "folke/neoconf.nvim",
     "SmiteshP/nvim-navic",
     "SmiteshP/nvim-navbuddy",
+    "nvimdev/lspsaga.nvim",
   },
   lazy = true,
   cond = function()

@@ -214,7 +214,7 @@ return {
         ["<Down>"] = cmp.mapping.select_next_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        -- https://github.com/neovim/neovim/issues/19575
+        -- MEMO: https://github.com/neovim/neovim/issues/19575
         -- Add windows terminal settings key.
         -- {
         --     "keys": "ctrl+space",

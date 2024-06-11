@@ -1,6 +1,7 @@
 return {
   "rebelot/kanagawa.nvim",
   lazy = true,
+  keys = { "<Leader>fco" },
   config = function()
     require('kanagawa').setup({
       compile = false,  -- enable compiling the colorscheme

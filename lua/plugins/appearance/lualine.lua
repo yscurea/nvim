@@ -43,22 +43,22 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_x = { clients_lsp },
-        lualine_y = { "fileformat", "filetype" },
+        lualine_y = { "fileformat", "filetype", "encoding" },
         lualine_z = { "progress", "location" },
       },
-      winbar = {
-        lualine_c = {
-          {
-            function()
-              return navic.get_location()
-            end,
-            cond = function()
-              return navic.is_available()
-            end,
-          },
-        },
-        lualine_y = { "encoding" },
-      },
+      -- winbar = {
+      --   -- lualine_c = {
+      --   --   {
+      --   --     function()
+      --   --       return navic.get_location()
+      --   --     end,
+      --   --     cond = function()
+      --   --       return navic.is_available()
+      --   --     end,
+      --   --   },
+      --   -- },
+      --   lualine_y = { "encoding" },
+      -- },
     })
   end,
 }

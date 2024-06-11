@@ -1,5 +1,5 @@
 return {
-  "olimorris/onedarkpro.nvim",
+  "luisiacc/gruvbox-baby",
   lazy = true,
   keys = { "<Leader>fco" },
 }

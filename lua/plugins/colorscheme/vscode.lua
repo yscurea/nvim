@@ -1,5 +1,5 @@
 return {
-  "olimorris/onedarkpro.nvim",
+  "Mofiqul/vscode.nvim",
   lazy = true,
   keys = { "<Leader>fco" },
 }
