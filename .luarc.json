@@ -2,4 +2,7 @@
     "diagnostics": {
         "globals": ["vim", "jit"],
     },
+    "diagnostics.disable": [
+        "missing-fields"
+    ],
 }

@@ -224,20 +224,11 @@ return {
         )
       },
       sources = {
-        {
-          name = "nvim_lsp",
-          max_item_count = 30,
-          option = {
-            markdown_oxide = {
-
-              keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
-            }
-          }
-        },
-        { name = "luasnip", max_item_count = 5 },
-        { name = "buffer",  max_item_count = 5 },
-        { name = "path",    max_item_count = 3 },
-        { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
+        { name = "nvim_lsp", max_item_count = 30 },
+        { name = "luasnip",  max_item_count = 5 },
+        { name = "buffer",   max_item_count = 3 },
+        { name = "path",     max_item_count = 3 },
+        { name = "cmdline",  option = { ignore_cmds = { "Man", "!" } } },
       },
     }
     require("cmp").setup(options)
