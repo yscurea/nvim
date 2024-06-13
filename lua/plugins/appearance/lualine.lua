@@ -19,19 +19,33 @@ return {
   config = function()
     local navic = require("nvim-navic")
     local clients_lsp = function()
-      local bufnr = vim.api.nvim_get_current_buf()
-
-      local clients = vim.lsp.buf_get_clients(bufnr)
-      if next(clients) == nil then
-        return ''
+      -- local bufnr = vim.api.nvim_get_current_buf()
+      --
+      -- local clients = vim.lsp.buf_get_clients(bufnr)
+      -- if next(clients) == nil then
+      --   return ''
+      -- end
+      --
+      -- local c = {}
+      -- for _, client in pairs(clients) do
+      --   table.insert(c, client.name)
+      -- end
+      -- return table.concat(c, ' ')
+      local clients = {}
+      for _, client in ipairs(vim.lsp.get_active_clients { bufnr = 0 }) do
+        if client.name == 'null-ls' then
+          local sources = {}
+          for _, source in ipairs(require('null-ls.sources').get_available(vim.bo.filetype)) do
+            table.insert(sources, source.name)
+          end
+          table.insert(clients, 'null-ls(' .. table.concat(sources, ', ') .. ')')
+        else
+          table.insert(clients, client.name)
+        end
       end
-
-      local c = {}
-      for _, client in pairs(clients) do
-        table.insert(c, client.name)
-      end
-      return table.concat(c, ' ')
+      return ' ' .. table.concat(clients, ', ')
     end
+
     require("lualine").setup({
       options = {
         theme = "auto",

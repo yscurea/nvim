@@ -174,15 +174,10 @@ return {
     local options = {
       formatting = {
         format = lspkind.cmp_format({
-          mode = 'symbol_text', -- show only symbol annotations
-          maxwidth = 50,        -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-          -- can also be a function to dynamically calculate max width such as
-          -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
-          ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-          show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-
-          -- The function below will be called before any actual modifications from lspkind
-          -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+          mode = 'symbol_text',
+          maxwidth = 50,
+          ellipsis_char = '...',
+          show_labelDetails = true,
           before = function(_, vim_item)
             return vim_item
           end
@@ -192,14 +187,8 @@ return {
         completeopt = "menu,menuone",
       },
       window = {
-        -- completion = {
-        -- side_padding = (cmp_style ~= "atom" and cmp_style ~= "atom_colored") and 1 or 0,
-        -- winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
-        -- scrollbar = false,
-        -- },
         documentation = {
           border = border("CmpDocBorder"),
-          -- winhighlight = "Normal:CmpDoc",
         },
       },
       snippet = {
@@ -214,15 +203,6 @@ return {
         ["<Down>"] = cmp.mapping.select_next_item(),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        -- MEMO: https://github.com/neovim/neovim/issues/19575
-        -- Add windows terminal settings key.
-        -- {
-        --     "keys": "ctrl+space",
-        --     "command": {
-        --         "action": "sendInput",
-        --         "input": "\u001b[32;5u"
-        --     }
-        -- }
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({
@@ -244,24 +224,20 @@ return {
         )
       },
       sources = {
-        { name = "luasnip" },
-        { name = "nvim_lsp", max_item_count = 30 },
-        { name = "path" },
-        { name = "buffer" },
-        { name = "cmdline",  option = { ignore_cmds = { "Man", "!" } } },
-      },
-      sorting = {
-        -- comparators = {
-        --   cmp.offset,
-        --   cmp.exact,
-        --   cmp.score,
-        --   cmp.recently_used,
-        --   cmp.locality,
-        --   cmp.kind,
-        --   cmp.sort_text,
-        --   cmp.length,
-        --   cmp.order,
-        -- },
+        {
+          name = "nvim_lsp",
+          max_item_count = 30,
+          option = {
+            markdown_oxide = {
+
+              keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
+            }
+          }
+        },
+        { name = "luasnip", max_item_count = 5 },
+        { name = "buffer",  max_item_count = 5 },
+        { name = "path",    max_item_count = 3 },
+        { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
       },
     }
     require("cmp").setup(options)

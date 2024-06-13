@@ -24,6 +24,6 @@ require("lazy").setup({
   { import = "plugins.editing" },
   { import = "plugins.appearance" },
   { import = "plugins.lang" },
-  { import = "plugins.telescope" },
+  { import = "plugins.finder" },
   { import = "plugins.others" },
 }, lazy_config)

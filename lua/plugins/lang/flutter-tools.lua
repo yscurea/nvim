@@ -150,6 +150,7 @@ return {
     "neovim/nvim-lspconfig",
     "SmiteshP/nvim-navic",
     "SmiteshP/nvim-navbuddy",
+    "mfussenegger/nvim-dap",
   },
   config = function()
     local navic = require("nvim-navic")
@@ -172,11 +173,15 @@ return {
       },
       debugger = {
         enabled = true,
-        run_via_dap = false,
+        run_via_dap = true,
+        exception_breakpoints = {},
+        register_configurations = function(paths)
+          require("dap").configurations.dart = {}
+        end,
       },
       dev_log = {
         enabled = true,
-        open_cmd = "10sp",
+        open_cmd = "tabedit",
       },
       lsp = {
         color = { enabled = true },

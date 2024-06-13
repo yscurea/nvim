@@ -1,6 +1,5 @@
 {
-  "diagnostics": {
-    "globals": ["vim", "jit"],
-    "hint.enable": false
-  }
+    "diagnostics": {
+        "globals": ["vim", "jit"],
+    },
 }

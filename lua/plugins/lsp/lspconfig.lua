@@ -126,6 +126,8 @@ return {
     "SmiteshP/nvim-navic",
     "SmiteshP/nvim-navbuddy",
     "nvimdev/lspsaga.nvim",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
   },
   lazy = true,
   cond = function()
@@ -157,9 +159,7 @@ return {
       require("core.utils").load_mappings(mappings, { buffer = bufnr })
     end
 
-    -- INFO: dependencies efm-langserver
-    -- scoop install go
-    -- go install github.com/mattn/efm-langserver@latest
+    local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     require("lspconfig").efm.setup({
       on_attach = on_attach,
@@ -175,68 +175,9 @@ return {
       settings = {
         rootMakers = { ".git/" },
         language = {
-          lua = {
-            { formatCommand = "lua-format -i", formatStdin = true },
-          },
-          python = {
-            -- INFO:
-            --  write the settings "%AppData%/efm-langserver/config.yaml" in Windows
-            --  write the settings ".config/efm-langserver/config.yaml" for other envs
-            -- INFO: poetry add ruff black mypy --dev
-            {
-              formatCommand = "ruff check --select I --fix --stdin-filename '${INPUT}'",
-              formatStdin = true,
-              rootMakers = {
-                'pyproject.toml',
-                'setup.py',
-                'requirements.txt',
-                'ruff.toml',
-              }
-            },
-            {
-              formatCommand = "ruff format --no-cache --stdin-filename '${INPUT}'",
-              formatStdin = true,
-              rootMakers = {
-                'pyproject.toml',
-                'setup.py',
-                'requirements.txt',
-                'ruff.toml',
-              }
-            },
-            {
-              lintCommand = 'ruff check --stdin-filename "${INPUT}"',
-              lintSource = "efm/ruff",
-              lintStdin = true,
-              lintFormats = { '%.%#:%l:%c: %t%n %m' },
-              lintSeverity = 4,
-              rootMarkers = {
-                'ruff.toml',
-                'pyproject.toml',
-                'setup.cfg',
-              },
-            },
-            {
-              lintCommand = "mypy --show-column-numbers --strict --strict-equality",
-              lintFormats = { "%f:%l:%c: %t%*[^:]: %m" },
-              lintSource = "mypy",
-              lintStdin = true,
-            },
-          },
-          markdown = {
-            { -- INFO: scoop install pandoc
-              formatCommand = "pandoc -f markdown+hard_line_breaks -t markdown_strict --tab-stop=2 --wrap=none",
-              formatStdin = true,
-            },
-            {
-              lintCommand = "markdownlint -s -c ~/.config/.markdownlintrc",
-              lintStdin = true,
-              lintFormats = {
-                '%f:%l %m',
-                '%f:%l:%c %m',
-                '%f: %l: %m',
-              },
-            }
-          },
+          lua = {},
+          python = {},
+          markdown = {},
         }
       },
     })
@@ -252,6 +193,7 @@ return {
     }
 
     require("lspconfig").lua_ls.setup({
+      capabilities = lsp_capabilities,
       on_attach = on_attach,
       handlers = handlers,
       settings = {
@@ -259,12 +201,14 @@ return {
       }
     })
 
-    require 'lspconfig'.terraformls.setup {
+    require("lspconfig").terraformls.setup {
+      capabilities = lsp_capabilities,
       on_attach = on_attach,
       handlers = handlers,
     }
 
     require("lspconfig").pyright.setup({
+      capabilities = lsp_capabilities,
       handlers = handlers,
       settings = {
         pyright = {
@@ -280,8 +224,20 @@ return {
       on_attach = on_attach
     })
 
-    require("lspconfig").typos_lsp.setup({})
+    require("lspconfig").typos_lsp.setup({
+      capabilities = lsp_capabilities,
+    })
 
+    local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+    capabilities.workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    }
+    require("lspconfig").markdown_oxide.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
     vim.api.nvim_create_autocmd(
       { "BufWritePre" },
       {

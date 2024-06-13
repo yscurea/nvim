@@ -16,9 +16,6 @@ return {
       transparent = true,
       colors = {},
       overrides = {
-        -- Normal = { fg = "black", fg = "#FFFFFF" },
-        -- Comment = { style = "italic" },
-        -- TelescopeBorder = { link = "Normal" },
         NavicIconsFile = { fg = leaf_colors.leaf_orange_0 },
         NavicIconsModule = { fg = leaf_colors.leaf_orange_1 },
         NavicIconsNamespace = { fg = leaf_colors.leaf_orange_2 },
