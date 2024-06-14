@@ -183,8 +183,8 @@ return {
     ["<Leader><Leader>"] = { "<C-^>", "Toggle between previous file and current file." },
     ["<Leader>n"] = { ":cnext<CR>", "Next quickfix." },
     ["<Leader>N"] = { ":cprevious<CR>", "Next quickfix." },
-    ["<Right>"] = { "10j", "Next quickfix." },
-    ["<Left>"] = { "10k", "Next quickfix." },
+    ["<Right>"] = { "10j", "10j" },
+    ["<Left>"] = { "10k", "10k" },
   },
   v = {
     ["<Leader>p"] = { '"0p', "paste 0 register" },

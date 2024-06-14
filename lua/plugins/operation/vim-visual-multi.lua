@@ -1,6 +1,7 @@
 -- マルチカーソル
 return {
   "mg979/vim-visual-multi",
+  lazy = true,
   keys = {
     "<C-Down>",
     "<C-Up>",
@@ -12,5 +13,4 @@ return {
     "q",
     "Q",
   },
-  lazy = true,
 }
