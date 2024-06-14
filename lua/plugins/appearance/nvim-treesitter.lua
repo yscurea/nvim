@@ -1,15 +1,12 @@
 -- 構文解析
-
--- INFO:
--- dependencies gcc
--- scoop install gcc : on windows
+-- required gcc
 
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
   build = ":TSUpdate",
-  event = "BufReadPost",
   lazy = true,
+  cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+  event = "BufReadPost",
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {},
@@ -22,8 +19,5 @@ return {
         disable = { "dart" } -- because dart ls format too slow
       },
     })
-  end,
-  cond = function()
-    return vim.g.vscode == nil
   end,
 }

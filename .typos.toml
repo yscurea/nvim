@@ -1,0 +1,7 @@
+[default.extend-words]
+"DotA" = "noice"
+
+[files]
+extend-exclude = [
+  "lazy-lock.json",
+]

@@ -2,7 +2,7 @@
 return {
   "kevinhwang91/nvim-ufo",
   lazy = true,
-  event = "BufReadPost",
+  event = "BufReadPre",
   dependencies = {
     "kevinhwang91/promise-async",
     {
@@ -21,7 +21,7 @@ return {
     },
   },
   init = function()
-    vim.o.fillchars = [[eob: ,fold: ,foldopen: ,foldsep: ,foldclose:>]]
+    vim.o.fillchars = [[eob: ,fold: ,foldopen:+,foldsep: ,foldclose:-]]
     vim.o.foldcolumn = "1"
     vim.o.foldlevel = 99
     vim.o.foldlevelstart = 99

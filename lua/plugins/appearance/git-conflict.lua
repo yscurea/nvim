@@ -2,8 +2,8 @@
 return {
   "akinsho/git-conflict.nvim",
   version = "v2.0.0",
-  keys = { "<A-g>" },
   lazy = true,
+  keys = { "<A-g>" },
   config = function()
     require('git-conflict').setup()
   end

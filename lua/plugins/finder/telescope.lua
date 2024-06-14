@@ -10,6 +10,7 @@ local mappings = {
     ["<Leader>fm"] = { "<cmd> Telescope marks <CR>", "find marks" },
     ["<Leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "find diagnostics" },
     ["<Leader>fco"] = { "<cmd> Telescope colorscheme <CR>", "find colorscheme" },
+    ["<Leader>fN"] = { "<cmd> Telescope notify <CR>", "find Notify" },
 
     ["<Leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits list" },
     ["<Leader>fgt"] = { "<cmd> Telescope git_status <CR>", "Git status list" },
@@ -60,9 +61,7 @@ return {
         file_browser = {
           theme = "ivy",
           hijack_netrw = false,
-          mappings = {
-            -- INFO: custom mappings.
-          },
+          mappings = {},
         },
         project = {
           base_dirs = {
@@ -84,12 +83,14 @@ return {
     local telescope = require("telescope")
     telescope.setup(options)
     telescope.load_extension("ui-select")
+    telescope.load_extension("notify")
   end,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
     "nvim-treesitter/nvim-treesitter",
     "nvim-telescope/telescope-ui-select.nvim",
+    "rcarriga/nvim-notify",
   },
   lazy = true,
 }

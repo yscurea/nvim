@@ -39,7 +39,4 @@ return {
       },
     })
   end,
-  cond = function()
-    return vim.g.vscode == nil
-  end,
 }

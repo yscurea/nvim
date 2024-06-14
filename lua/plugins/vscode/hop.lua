@@ -1,18 +1,14 @@
 -- カーソル移動をどこでも一発で
-local mappings = {
-  n = {
-    ["<Leader>jw"] = { "<cmd>HopWord<CR>", "単語区切りジャンプ" },
-    ["<Leader>jv"] = { "<cmd>HopVertical<CR>", "縦列ジャンプ" },
-  },
-}
-
 return {
   "phaazon/hop.nvim",
   branch = "v2",
-  cmd = { "HopWord", "HopVertical" },
-  init = function()
-    require("core.utils").load_mappings(mappings)
-  end,
+  keys = {
+    { "<Leader>ja", "<cmd>HopAnywhere<CR>",  desc = "jump anywhere",   mode = { "n", "v" } },
+    { "<Leader>jw", "<cmd>HopWord<CR>",      desc = "jump word",       mode = { "n", "v" } },
+    { "<Leader>jv", "<cmd>HopVertical<CR>",  desc = "jump vertical",   mode = { "n", "v" } },
+    { "<Leader>jl", "<cmd>HopLineStart<CR>", desc = "jump line start", mode = { "n", "v" } },
+    { "<Leader>jp", "<cmd>HopPattern<CR>",   desc = "jump pattern",    mode = { "n", "v" } },
+  },
   config = function()
     require("hop").setup({})
   end,

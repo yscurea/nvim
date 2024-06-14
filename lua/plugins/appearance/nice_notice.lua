@@ -3,6 +3,7 @@ return {
   "folke/noice.nvim",
   lazy = true,
   keys = { ":", "/" },
+  event = { "CmdlineEnter" },
   dependencies = {
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
@@ -98,13 +99,13 @@ return {
           ["cmp.entry.get_documentation"] = true,
         },
         hover = {
-          enabled = true,
+          enabled = false,
           silent = false,
           view = nil,
           opts = {},
         },
         signature = {
-          enabled = true,
+          enabled = false,
           auto_open = {
             enabled = true,
             trigger = true,
@@ -115,7 +116,7 @@ return {
           opts = {},
         },
         message = {
-          enabled = true,
+          enabled = false,
           view = "notify",
           opts = {},
         },
