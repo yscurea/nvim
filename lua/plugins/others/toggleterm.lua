@@ -1,5 +1,4 @@
 -- ターミナル制御
-
 function LazygitToggle()
   local Terminal = require("toggleterm.terminal").Terminal
   local lazygit = Terminal:new({
@@ -38,9 +37,6 @@ local mappings = {
 return {
   "akinsho/toggleterm.nvim",
   version = "*",
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   keys = { "<Leader>g" },
   cmd = { "ToggleTerm" },
   init = function()

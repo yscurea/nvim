@@ -1,8 +1,9 @@
+-- 検索でヒット数表示など
 return {
   "kevinhwang91/nvim-hlslens",
   keys = { "*", "/", "#", "n", "N", "g*", "G#" },
   config = function()
-    require('hlslens').setup()
+    require("hlslens").setup()
 
     local kopts = { noremap = true, silent = true }
 

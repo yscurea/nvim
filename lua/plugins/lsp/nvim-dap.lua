@@ -26,6 +26,7 @@ local mappings = {
   },
 }
 
+-- debug adapter
 return {
   "mfussenegger/nvim-dap",
   keys = {
@@ -38,9 +39,6 @@ return {
     { "<Leader>dr",  mode = "n", desc = "repl.open" },
     { "<Leader>dl",  mode = "n", desc = "run_last" },
   },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   lazy = true,
   config = function()
     require("core.utils").load_mappings(mappings)

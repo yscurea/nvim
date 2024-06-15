@@ -1,8 +1,8 @@
 -- windowのボーダーカラー
 return {
   "nvim-zh/colorful-winsep.nvim",
-  event = { "WinNew" },
+  event = { "WinResized" },
   config = function()
-    require('colorful-winsep').setup()
+    require("colorful-winsep").setup()
   end,
 }

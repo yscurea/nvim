@@ -1,5 +1,5 @@
 [default.extend-words]
-"DotA" = "noice"
+"noice" = "noice"
 
 [files]
 extend-exclude = [

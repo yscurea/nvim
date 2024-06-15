@@ -18,12 +18,13 @@ vim.opt.rtp:prepend(lazy_path)
 local lazy_config = require("core.lazy_nvim")
 
 require("lazy").setup({
+  { import = "plugins.appearance" },
   { import = "plugins.colorscheme" },
+  { import = "plugins.editing" },
+  { import = "plugins.finder" },
+  { import = "plugins.git" },
+  { import = "plugins.lang" },
   { import = "plugins.lsp" },
   { import = "plugins.operation" },
-  { import = "plugins.editing" },
-  { import = "plugins.appearance" },
-  { import = "plugins.lang" },
-  { import = "plugins.finder" },
   { import = "plugins.others" },
 }, lazy_config)

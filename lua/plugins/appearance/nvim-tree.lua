@@ -1,14 +1,13 @@
 return {
   "nvim-tree/nvim-tree.lua",
   keys = {
-    { "<Leader>e", "<cmd> NvimTreeFindFile <CR>", desc = "open file tree", mode = "n" },
+    { "<Leader>e", "<cmd> NvimTreeFindFile <CR>", desc = "open file tree",   mode = "n" },
     { "<Leader>E", "<cmd> NvimTreeToggle <CR>",   desc = "Toggle file tree", mode = "n" },
   },
   cmd = { "NvimTreeOpen", "NvimTreeToggle", "NvimTreeFocus", "NvimTreeFindFile" },
   init = function()
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
-    vim.opt.termguicolors = true
   end,
   lazy = true,
   config = function()
@@ -93,7 +92,4 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
 }

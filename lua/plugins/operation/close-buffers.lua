@@ -4,13 +4,13 @@ local mappings = {
       function()
         require('close_buffers').delete({ type = 'this' })
       end,
-      "現在のバッファを削除",
+      "close current buffer",
     },
     ["<leader>X"] = {
       function()
         require("close_buffers").wipe({ type = "all" })
       end,
-      "バッファを全て削除",
+      "close all buffer",
     },
   },
 }
@@ -19,9 +19,6 @@ return {
   "kazhala/close-buffers.nvim",
   lazy = true,
   keys = { "<leader>x", "<leader>X" },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   config = function()
     require("core.utils").load_mappings(mappings)
     require("close_buffers").setup({})

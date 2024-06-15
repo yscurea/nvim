@@ -5,7 +5,6 @@ if vim.g.vscode then
   vim.cmd([[ highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline ]])
 end
 
-
 return {
   "unblevable/quick-scope",
   event = "CursorMoved",

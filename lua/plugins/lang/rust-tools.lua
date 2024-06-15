@@ -1,6 +1,7 @@
 -- Rust開発環境用
 return {
   "simrat39/rust-tools.nvim",
+  lazy = true,
   ft = { "rust" },
   config = function()
     require("rust-tools").setup({
@@ -22,5 +23,4 @@ return {
       },
     })
   end,
-  lazy = true,
 }

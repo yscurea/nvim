@@ -106,78 +106,76 @@ return {
       function()
         require("vscode-neovim").call("workbench.action.splitEditorDown")
       end,
-      "画面の上下分割",
+      "horizontal split window",
     },
     ["sv"] = {
       function()
         require("vscode-neovim").call("workbench.action.splitEditorRight")
       end,
-      "画面の左右分割",
+      "vertical split window",
     },
     ["sj"] = {
       function()
         require("vscode-neovim").call("workbench.action.focusBelowGroup")
       end,
-      "下ウィンドウに移動",
+      "cursor move to down window",
     },
     ["sk"] = {
       function()
         require("vscode-neovim").call("workbench.action.focusAboveGroup")
       end,
-      "上ウィンドウに移動",
+      "cursor move to up window",
     },
     ["sl"] = {
       function()
         require("vscode-neovim").call("workbench.action.focusRightGroup")
       end,
-      "右ウィンドウに移動"
+      "cursor move to right window"
     },
     ["sh"] = {
       function()
         require("vscode-neovim").call("workbench.action.focusLeftGroup")
       end,
-      "左ウィンドウに移動",
+      "cursor move to left window",
     },
     ["sn"] = {
       function()
         require("vscode-neovim").call("workbench.action.moveEditorToNextGroup")
       end,
-      "次ウィンドウへ",
+      "window next",
     },
     ["sp"] = {
       function()
         require("vscode-neovim").call("workbench.action.moveEditorToPreviousGroup")
       end,
-      "前ウィンドウへ",
+      "window prev",
     },
     ["sL"] = {
       function()
         require("vscode-neovim").call("workbench.action.moveEditorToPreviousGroup")
       end,
-      "ウィンドウを右へ",
+      "window move to right",
     },
     ["sH"] = {
       function()
         require("vscode-neovim").call("workbench.action.moveEditorToNextGroup")
       end,
-      "ウィンドウを左へ",
+      "window move to left",
     },
 
-    -- "editor.action.addCursorsToTop"
-
-    ["<C-j>"] = { "+", "一行下に" },
-    ["<C-k>"] = { "-", "一行上に" },
+    ["<C-j>"] = { "+", "move cursor next line start" },
+    ["<C-k>"] = { "-", "move cursor prev line start" },
     ["zj"] = {
       ':call VSCodeExtensionNotify("reveal", "top", 0)<CR>',
-      "カーソルを画面最上部に",
+      "cursor top with scroll",
     },
     ["zk"] = {
       ':call VSCodeExtensionNotify("reveal", "bottom", 0)<CR>',
-      "カーソルを画面最下部に",
+      "cursor bottom with scroll",
     },
-    ["+"] = { "<C-a>", "インクリメント" },
-    ["-"] = { "<C-x>", "デクリメント" },
-    ["<Leader>re"] = { ":%s;\\<<C-R><C-W>\\>;g<Left><Left>;", "置換" },
+    ["+"] = { "<C-a>", "Increment" },
+    ["-"] = { "<C-x>", "Decrement" },
+    ["<Leader>re"] = { ":%s;\\<<C-R><C-W>\\>;g<Left><Left>;", "Replace" },
     ["<Leader>p"] = { '"0p', "paste 0 register" },
     ["<Leader>P"] = { '"0P', "paste 0 register" },
     ["<Leader><Leader>"] = { "<C-^>", "Toggle between previous file and current file." },
@@ -191,10 +189,10 @@ return {
     ["<Leader>P"] = { '"0P', "paste 0 register" },
     ["+"] = { "<C-a>", "Increment" },
     ["-"] = { "<C-x>", "Decrement" },
-    ["zj"] = { "zt", "カーソルを画面最上部に" },
-    ["zk"] = { "zb", "カーソルを画面最下部に" },
-    ["<C-j>"] = { "+", "一行下に" },
-    ["<C-k>"] = { "-", "一行上に" },
+    ["zj"] = { "zt", "cursor top with scroll" },
+    ["zk"] = { "zb", "cursor bottom with scroll" },
+    ["<C-j>"] = { "+", "move cursor next line start" },
+    ["<C-k>"] = { "-", "move cursor prev line start" },
     ["<Right>"] = { "10j", "10j" },
     ["<Left>"] = { "10k", "10k" },
   },

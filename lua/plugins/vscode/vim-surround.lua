@@ -1,5 +1,14 @@
 -- 括弧編集強化
 return {
   "tpope/vim-surround",
-  keys = { 'ds', 'cs', 'cS', 'ys', 'yS', 'yss', 'ySs', 'ySS', 'S', 'gS' },
+  lazy = true,
+  keys = {
+    { "ds",  mode = { "n" }, desc = "delete surround" },
+    { "cs",  mode = { "n" }, desc = "change surround" },
+    { "cS",  mode = { "n" }, desc = "change surround" },
+    { "ys",  mode = { "n" }, desc = "attach surround" },
+    { "yS",  mode = { "n" }, desc = "attach surround" },
+    { "yss", mode = { "n" }, desc = "attach surround line" },
+    { "ySS", mode = { "n" }, desc = "attach surround line updown" },
+  },
 }

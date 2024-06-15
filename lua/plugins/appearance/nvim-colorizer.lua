@@ -1,7 +1,12 @@
 -- カラーコードなどを色づけしてくれる
 return {
   "norcalli/nvim-colorizer.lua",
-  cmd = "ColorizerToggle",
+  cmd = {
+    "ColorizerToggle",
+    "ColorizerAttachToBuffer",
+    "ColorizerDetachFromBuffer",
+    "ColorizerReloadAllBuffers",
+  },
   lazy = true,
   config = true,
 }

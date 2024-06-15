@@ -3,6 +3,7 @@ return {
   "petertriho/nvim-scrollbar",
   lazy = true,
   keys = {
+    { "<Leader>sh", ":ScrollbarShow<CR>",   mode = "n", desc = "Toggle scrollbar" },
     { "<Leader>st", ":ScrollbarToggle<CR>", mode = "n", desc = "Toggle scrollbar" },
   },
   cmd = {
@@ -19,8 +20,5 @@ return {
     require("scrollbar").setup({})
     require("scrollbar.handlers.gitsigns").setup({})
     require("scrollbar.handlers.search").setup({})
-  end,
-  cond = function()
-    return vim.g.vscode == nil
   end,
 }

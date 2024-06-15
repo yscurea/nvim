@@ -5,16 +5,20 @@ local mappings = {
   },
 }
 
+-- バッファ内シンボルの検索
 return {
   "SmiteshP/nvim-navbuddy",
+  lazy = true,
+  event = { "LspAttach" },
+  cmd = { "Navbuddy" },
+  config = function()
+    require("core.utils").load_mappings(mappings)
+    require("nvim-navbuddy").setup({
+      lsp = { auto_attach = true }
+    })
+  end,
   dependencies = {
     "SmiteshP/nvim-navic",
     "MunifTanjim/nui.nvim",
   },
-  lazy = true,
-  event = "LspAttach",
-  opts = { lsp = { auto_attach = true } },
-  config = function()
-    require("core.utils").load_mappings(mappings)
-  end
 }

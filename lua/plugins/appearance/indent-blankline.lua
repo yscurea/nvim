@@ -26,8 +26,8 @@ return {
       vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
       vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
     end)
+
     vim.g.rainbow_delimiters = { highlight = highlight }
-    hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
     require("ibl").setup({
       enabled = true,
       exclude = {
@@ -42,13 +42,10 @@ return {
         },
         buftypes = { "terminal" },
       },
-      whitespace = {
-        remove_blankline_trail = true,
-      },
       scope = {
-        show_start = true,
         highlight = highlight,
       },
     })
+    hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
   end,
 }

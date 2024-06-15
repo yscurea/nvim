@@ -4,7 +4,7 @@ return {
   cmd = { "OverseerToggle", "OverseerRun" },
   keys = {
     { "<Leader>oo", "<cmd>OverseerToggle<CR>", mode = "n", desc = "overseer toggle" },
-    { "<Leader>or", "<cmd>OverseerRun<CR>",    mode = "n", desc = "overseer toggle" },
+    { "<Leader>or", "<cmd>OverseerRun<CR>",    mode = "n", desc = "overseer run" },
   },
   config = function()
     require('overseer').setup()

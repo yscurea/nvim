@@ -123,9 +123,8 @@ local mappings = {
 
 return {
   "akinsho/flutter-tools.nvim",
-  ft = {
-    "dart"
-  },
+  lazy = true,
+  ft = { "dart" },
   cmd = {
     "FlutterRun",
     "FlutterDevices",
@@ -142,9 +141,6 @@ return {
     "FlutterSuper",
     "FlutterReanalyze",
   },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "neovim/nvim-lspconfig",
@@ -195,5 +191,4 @@ return {
       },
     })
   end,
-  lazy = true,
 }

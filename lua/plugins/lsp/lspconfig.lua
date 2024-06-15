@@ -130,9 +130,6 @@ return {
     "hrsh7th/cmp-nvim-lsp",
   },
   lazy = true,
-  cond = function()
-    return vim.g.vscode == nil
-  end,
   config = function()
     local navic = require("nvim-navic")
     local navbuddy = require("nvim-navbuddy")

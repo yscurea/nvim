@@ -2,8 +2,5 @@
 return {
   "dhruvasagar/vim-table-mode",
   lazy = true,
-  ft = "md",
-  cond = function()
-    return vim.g.vscode == nil
-  end,
+  ft = { "md", "markdown" },
 }

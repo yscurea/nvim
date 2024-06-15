@@ -4,9 +4,6 @@ return {
   "rcarriga/nvim-notify",
   lazy = true,
   event = { "UIEnter" },
-  init = function()
-    vim.opt.termguicolors = true
-  end,
   config = function()
     require("notify").setup({
       level = 2,

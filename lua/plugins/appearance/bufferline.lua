@@ -10,9 +10,6 @@ return {
     { "<Leader>>", "<cmd>BufferLineMoveNext<CR>", desc = "バッファを右に移動", mode = "n" },
     { "<Leader>b", "<cmd>BufferLinePick<CR>", desc = "バッファ選択", mode = "n" },
   },
-  init = function()
-    vim.opt.termguicolors = true
-  end,
   config = function()
     require("bufferline").setup({
       options = {

@@ -2,9 +2,7 @@
 local mappings = {
   n = {
     ["<Leader>wK"] = {
-      function()
-        vim.cmd("WhichKey")
-      end,
+      "<cmd>WhichKey<CR>",
       "Which-key all keymaps",
     },
     ["<Leader>wk"] = {
@@ -19,15 +17,22 @@ local mappings = {
 
 return {
   "folke/which-key.nvim",
-  keys = { "<Leader>", '"', "'", "`", "c", "g", "z" },
-  cond = function()
-    return vim.g.vscode == nil
-  end,
+  lazy = true,
+  keys = {
+    "<Leader>",
+    '"',
+    "'",
+    "`",
+    "c",
+    "d",
+    "y",
+    "g",
+    "z",
+  },
   init = function()
     require("core.utils").load_mappings(mappings)
   end,
   config = function()
     require("which-key").setup({})
   end,
-  lazy = true,
 }

@@ -7,4 +7,3 @@ return {
     require("bqf").setup()
   end,
 }
-

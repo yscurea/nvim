@@ -9,6 +9,7 @@ local mappings = {
   }
 }
 
+-- debug adapter ui
 return {
   "rcarriga/nvim-dap-ui",
   lazy = true,
