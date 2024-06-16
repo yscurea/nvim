@@ -102,6 +102,14 @@ return {
       "close all buffer"
     },
 
+    ["so"] = { "zo", "open fold" },
+    ["sO"] = { "zO", "open all fold" },
+    ["sa"] = { "zo", "tmp toggle fold" },
+    ["sA"] = { "zO", "tmp toggle all fold" },
+    ["sm"] = { "zm", "close fold" },
+    ["sM"] = { "zM", "close all fold" },
+
+
     ["ss"] = {
       function()
         require("vscode-neovim").call("workbench.action.splitEditorDown")

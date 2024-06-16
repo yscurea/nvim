@@ -171,8 +171,9 @@ return {
         enabled = true,
         run_via_dap = true,
         exception_breakpoints = {},
-        register_configurations = function(paths)
+        register_configurations = function(_)
           require("dap").configurations.dart = {}
+          require("dap.ext.vscode").load_launchjs()
         end,
       },
       dev_log = {

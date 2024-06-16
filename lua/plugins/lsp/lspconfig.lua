@@ -223,11 +223,33 @@ return {
 
     require("lspconfig").typos_lsp.setup({
       capabilities = lsp_capabilities,
+      handlers = handlers,
     })
 
     require("lspconfig").marksman.setup({
       capabilities = lsp_capabilities,
+      handlers = handlers,
       on_attach = on_attach,
+    })
+
+    require("lspconfig").biome.setup({
+      capabilities = lsp_capabilities,
+      handlers = handlers,
+      on_attach = on_attach,
+      single_file_support = true,
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "typescript",
+        "typescript.tsx",
+        "typescriptreact",
+        "astro",
+        "svelte",
+        "vue",
+        "css",
+      }
     })
 
     vim.api.nvim_create_autocmd(

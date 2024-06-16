@@ -24,6 +24,11 @@ return {
           color = "#81e043",
           name = "Log",
         },
+        ["yaml"] = {
+          icon = "",
+          color = "#f1502f",
+          name = "Yaml",
+        },
       },
     })
   end,

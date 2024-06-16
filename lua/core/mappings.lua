@@ -14,7 +14,16 @@ return {
     ["yd"] = { '"_d', "d without yank" },
     ["yc"] = { '"_c', "c without yank" },
 
-    -- window操作系
+    -- Fold command
+    ["s"] = { "<Nop>", "" },
+    ["so"] = { "zo", "open fold" },
+    ["sO"] = { "zO", "open all fold" },
+    ["sa"] = { "zo", "tmp toggle fold" },
+    ["sA"] = { "zO", "tmp toggle all fold" },
+    ["sm"] = { "zm", "close fold" },
+    ["sM"] = { "zM", "close all fold" },
+
+    -- window operation. Use 'r' key instead of 's', if you want to use replace key.
     ["ss"] = { ":sp<CR>", "horizontal split window" },
     ["sv"] = { ":vs<CR>", "vertical split window" },
     ["sJ"] = { "<C-w>J", "window move to down" },
