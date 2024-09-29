@@ -7,7 +7,4 @@ return {
   config = function()
     require("telescope").load_extension("frecency")
   end,
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-  },
 }

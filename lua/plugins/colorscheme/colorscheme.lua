@@ -1,9 +1,7 @@
 return {
   {
     "daschw/leaf.nvim",
-    lazy = false,
-    event = "BufReadPost",
-    priority = 1000,
+    lazy = true,
     config = function()
       require("leaf").setup({
         underlineStyle = "underline",
@@ -63,12 +61,17 @@ return {
   {
     "luisiacc/gruvbox-baby",
     lazy = true,
+    config = function()
+      require('gruvbox').setup()
+      vim.cmd("colorscheme gruvbox")
+    end,
   },
   {
     "rebelot/kanagawa.nvim",
     lazy = true,
     config = function()
-      require('kanagawa').setup()
+      require("kanagawa").setup()
+      vim.cmd("colorscheme kanagawa-lotus")
     end,
   },
   {
@@ -81,7 +84,10 @@ return {
   },
   {
     "olimorris/onedarkpro.nvim",
-    lazy = true,
+    lazy = false,
+    config = function()
+      vim.cmd [[colorscheme onedark]]
+    end,
   },
   {
     "rose-pine/neovim",
@@ -90,6 +96,11 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
+    priority = 1000,
+    -- opts = {},
+    -- config = function()
+    --   vim.cmd [[colorscheme tokyonight]]
+    -- end,
   },
   {
     "Mofiqul/vscode.nvim",

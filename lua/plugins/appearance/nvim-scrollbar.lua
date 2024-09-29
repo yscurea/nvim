@@ -11,10 +11,6 @@ return {
     "ScrollbarHide",
     "ScrollbarToggle",
   },
-  dependencies = {
-    { "kevinhwang91/nvim-hlslens" },
-    { "lewis6991/gitsigns.nvim" },
-  },
   config = function()
     require("gitsigns").setup({})
     require("scrollbar").setup({})

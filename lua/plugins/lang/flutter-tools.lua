@@ -49,12 +49,12 @@ local mappings = {
       "LSP definition type",
     },
 
-    -- ["<Leader>c"] = {
-    --   function()
-    --     vim.lsp.buf.code_action()
-    --   end,
-    --   "LSP code action",
-    -- },
+    ["<Leader>a"] = {
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      "LSP code action",
+    },
 
     ["gr"] = {
       function()
@@ -140,13 +140,6 @@ return {
     "FlutterLspRestart",
     "FlutterSuper",
     "FlutterReanalyze",
-  },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "neovim/nvim-lspconfig",
-    "SmiteshP/nvim-navic",
-    "SmiteshP/nvim-navbuddy",
-    "mfussenegger/nvim-dap",
   },
   config = function()
     local navic = require("nvim-navic")

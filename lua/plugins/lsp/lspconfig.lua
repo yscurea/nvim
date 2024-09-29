@@ -46,7 +46,7 @@ local mappings = {
       "LSP definition type",
     },
 
-    ["<Leader>lc"] = {
+    ["<Leader>a"] = {
       "<cmd>Lspsaga code_action<CR>",
       "LSP code action",
     },
@@ -121,16 +121,9 @@ local mappings = {
 return {
   "neovim/nvim-lspconfig",
   event = "BufReadPost",
-  dependencies = {
-    "folke/neoconf.nvim",
-    "SmiteshP/nvim-navic",
-    "SmiteshP/nvim-navbuddy",
-    "nvimdev/lspsaga.nvim",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-nvim-lsp",
-  },
   lazy = true,
   config = function()
+    require("neoconf")
     local navic = require("nvim-navic")
     local navbuddy = require("nvim-navbuddy")
     local border = {
@@ -227,6 +220,12 @@ return {
     })
 
     require("lspconfig").marksman.setup({
+      capabilities = lsp_capabilities,
+      handlers = handlers,
+      on_attach = on_attach,
+    })
+
+    require("lspconfig").gopls.setup({
       capabilities = lsp_capabilities,
       handlers = handlers,
       on_attach = on_attach,

@@ -6,6 +6,5 @@ return {
   keys = {
     { "<Leader>fn", "<cmd> TodoTelescope <CR>", desc = "find note", mode = "n" },
   },
-  dependencies = { "nvim-lua/plenary.nvim" },
   config = true,
 }

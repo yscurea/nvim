@@ -6,7 +6,4 @@ return {
   config = function()
     require("telescope").load_extension("file_browser")
   end,
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-  },
 }

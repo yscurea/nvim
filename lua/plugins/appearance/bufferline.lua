@@ -2,7 +2,6 @@ return {
   "akinsho/bufferline.nvim",
   lazy = true,
   event = "BufAdd",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<s-Tab>", "<cmd>BufferLineCyclePrev<CR>", desc = "前バッファへ", mode = "n" },
     { "<Tab>", "<cmd>BufferLineCycleNext<CR>", desc = "次バッファへ", mode = "n" },

@@ -24,6 +24,7 @@ return {
   init = function()
     require("core.utils").load_mappings(mappings)
   end,
+  lazy = true,
   config = function()
     local options = {
       defaults = {
@@ -85,12 +86,4 @@ return {
     telescope.load_extension("ui-select")
     telescope.load_extension("notify")
   end,
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-telescope/telescope-ui-select.nvim",
-    "rcarriga/nvim-notify",
-  },
-  lazy = true,
 }

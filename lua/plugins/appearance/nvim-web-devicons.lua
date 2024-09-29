@@ -2,10 +2,8 @@
 return {
   "nvim-tree/nvim-web-devicons",
   lazy = true,
-  dependencies = {
-    "DaikyXendo/nvim-material-icon",
-  },
   config = function()
+    require("mini.icons")
     require("nvim-web-devicons").setup({
       override = {},
       color_icons = true,

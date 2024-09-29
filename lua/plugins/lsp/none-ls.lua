@@ -1,10 +1,6 @@
 -- LSPではないものをNeovimのLSPに注入してLSPのように動かすため
 return {
   "nvimtools/none-ls.nvim",
-  dependencies = {
-    "neovim/nvim-lspconfig",
-    "nvim-lua/plenary.nvim",
-  },
   lazy = true,
   event = "BufReadPost",
   config = function()

@@ -89,7 +89,4 @@ return {
     vim.g.nvim_tree_highlight_opened_files = 1
     vim.cmd("highlight def link NvimTreeOpenedFolderName NvimTreeOpenedFile")
   end,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
 }

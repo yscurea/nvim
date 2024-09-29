@@ -2,10 +2,6 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "CursorMoved",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "SmiteshP/nvim-navic",
-  },
   lazy = true,
   config = function()
     local clients_lsp = function()

@@ -16,10 +16,6 @@ return {
   keys = {
     { "<Leader>dd", mode = "n", desc = "launch dap UI" },
   },
-  dependencies = {
-    "mfussenegger/nvim-dap",
-    "nvim-neotest/nvim-nio",
-  },
   config = function()
     require("dapui").setup({
       icons = { expanded = "", collapsed = "" },

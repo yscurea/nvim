@@ -66,7 +66,6 @@ M.lazy_nvim = {
           cwd = plugin.dir,
         })
       end,
-
       ["<Leader>t"] = function(plugin)
         require("lazy.util").float_term(nil, {
           cwd = plugin.dir,

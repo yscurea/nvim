@@ -4,10 +4,6 @@ return {
   lazy = true,
   keys = { ":", "/" },
   event = { "CmdlineEnter" },
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-  },
   config = function()
     require("noice").setup({
       cmdline = {

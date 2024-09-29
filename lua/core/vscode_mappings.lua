@@ -170,6 +170,12 @@ return {
       end,
       "window move to left",
     },
+    ["<Leader>z"] = {
+      function()
+        require("vscode-neovim").call("workbench.action.toggleZenMode")
+      end,
+      "zen mode",
+    },
 
     ["<C-j>"] = { "+", "move cursor next line start" },
     ["<C-k>"] = { "-", "move cursor prev line start" },

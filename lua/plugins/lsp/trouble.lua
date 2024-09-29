@@ -18,5 +18,4 @@ return {
       width = 100,
     })
   end,
-  dependencies = { "nvim-tree/nvim-web-devicons" },
 }

@@ -17,8 +17,4 @@ return {
       lsp = { auto_attach = true }
     })
   end,
-  dependencies = {
-    "SmiteshP/nvim-navic",
-    "MunifTanjim/nui.nvim",
-  },
 }

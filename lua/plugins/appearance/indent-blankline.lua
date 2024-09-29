@@ -3,9 +3,6 @@ return {
   main = "ibl",
   lazy = true,
   event = "BufReadPost",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-  },
   config = function()
     local highlight = {
       "RainbowRed",
