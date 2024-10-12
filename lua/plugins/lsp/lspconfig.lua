@@ -202,12 +202,12 @@ return {
       handlers = handlers,
       settings = {
         pyright = {
-          disableOrganizeImports = true,
+          -- disableOrganizeImports = false,
         },
         python = {
           analysis = {
             ignore = { '*' },
-            typeCheckingMode = "off",
+            typeCheckingMode = "strict",
           }
         }
       },
