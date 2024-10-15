@@ -124,6 +124,7 @@ return {
   lazy = true,
   config = function()
     require("neoconf")
+    local util = require("lspconfig/util")
     local navic = require("nvim-navic")
     local navbuddy = require("nvim-navbuddy")
     local border = {
@@ -151,28 +152,35 @@ return {
 
     local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+    -- format: https://vim-jp.org/vimdoc-en/quickfix.html#error-file-format
     require("lspconfig").efm.setup({
       on_attach = on_attach,
       handlers = handlers,
       init_options = {
         documentFormatting = true,
       },
-      filetypes = {
-        "lua",
-        "python",
-        "markdown",
-      },
+      filetypes = { "*" },
       settings = {
         rootMakers = { ".git/" },
-        language = {
+        languages = {
           lua = {},
           python = {},
           markdown = {},
+          ["="] = {
+            {
+              -- $ cargo install typos-cli
+              lintCommand = "typos --format brief -",
+              lintStdin = true,
+              lintFormats = {
+                "%f:%l:%c: %m"
+              },
+            },
+          }
         }
       },
     })
 
-    require("lspconfig").ruff_lsp.setup {
+    require("lspconfig").ruff.setup {
       handlers = handlers,
       on_attach = on_attach,
       init_options = {
@@ -206,22 +214,12 @@ return {
         },
         python = {
           analysis = {
+            extraPaths = { "." },
             ignore = { '*' },
             typeCheckingMode = "strict",
           }
         }
       },
-      on_attach = on_attach
-    })
-
-    require("lspconfig").typos_lsp.setup({
-      capabilities = lsp_capabilities,
-      handlers = handlers,
-    })
-
-    require("lspconfig").marksman.setup({
-      capabilities = lsp_capabilities,
-      handlers = handlers,
       on_attach = on_attach,
     })
 

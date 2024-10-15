@@ -46,7 +46,6 @@ return {
         theme = "dark",    -- default, based on vim.o.background, alternatives: "light", "dark"
         contrast = "high", -- default, alternatives: "medium", "high"
       })
-      vim.cmd("colorscheme leaf")
     end,
   },
   {
@@ -61,17 +60,14 @@ return {
   {
     "luisiacc/gruvbox-baby",
     lazy = true,
-    config = function()
-      require('gruvbox').setup()
-      vim.cmd("colorscheme gruvbox")
-    end,
   },
   {
     "rebelot/kanagawa.nvim",
-    lazy = true,
+    lazy = false,
+    priority = 1000,
     config = function()
       require("kanagawa").setup()
-      vim.cmd("colorscheme kanagawa-lotus")
+      vim.cmd("colorscheme kanagawa")
     end,
   },
   {
@@ -84,10 +80,7 @@ return {
   },
   {
     "olimorris/onedarkpro.nvim",
-    lazy = false,
-    config = function()
-      vim.cmd [[colorscheme onedark]]
-    end,
+    lazy = true,
   },
   {
     "rose-pine/neovim",
@@ -96,11 +89,6 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = true,
-    priority = 1000,
-    -- opts = {},
-    -- config = function()
-    --   vim.cmd [[colorscheme tokyonight]]
-    -- end,
   },
   {
     "Mofiqul/vscode.nvim",
