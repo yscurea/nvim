@@ -1,48 +1,59 @@
-local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-local sep = is_windows and "\\" or "/"
-local opt = vim.opt
-local g = vim.g
+local is_windows           = vim.loop.os_uname().sysname == "Windows_NT"
+local sep                  = is_windows and "\\" or "/"
+local opt                  = vim.opt
+local g                    = vim.g
 
 -------------------------------------- globals -----------------------------------------
-g.mapleader = " "
-g.plugin_cache_dir = vim.fn.stdpath("data") .. sep .. "lazy"
+g.mapleader                = " "
+g.plugin_cache_dir         = vim.fn.stdpath("data") .. sep .. "lazy"
 -- disable netrw
-g.loaded_netrw = 1
-g.loaded_netrwPlugin = 1
-g.editorconfig = true
+g.loaded_netrw             = 1
+g.loaded_netrwPlugin       = 1
+g.loaded_gzip              = 1
+g.loaded_tar               = 1
+g.loaded_tarPlugin         = 1
+g.loaded_zip               = 1
+g.loaded_zipPlugin         = 1
+g.loaded_rrhelper          = 1
+g.loaded_2html_plugin      = 1
+g.loaded_vimball           = 1
+g.loaded_vimballPlugin     = 1
+g.loaded_getscript         = 1
+g.loaded_getscriptPlugin   = 1
+g.loaded_netrwSettings     = 1
+g.loaded_netrwFileHandlers = 1
+g.editorconfig             = true
 -- g.directory = vim.fn.stdpath("data")
-opt.cmdheight = 0
+opt.cmdheight              = 0
 
 -------------------------------------- options ------------------------------------------
-vim.wo.wrap = false
-opt.autoread = true
-opt.laststatus = 3
-opt.showmode = false
+vim.wo.wrap                = false
+opt.autoread               = true
+opt.laststatus             = 3
+opt.showmode               = false
 
-opt.clipboard = "unnamedplus"
-opt.cursorline = true
+opt.clipboard              = "unnamedplus"
+opt.cursorline             = true
 
--- デフォルトインデント
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
+-- default indent style
+opt.expandtab              = true
+opt.shiftwidth             = 2
+opt.smartindent            = true
+opt.tabstop                = 2
+opt.softtabstop            = 2
 
-opt.fillchars = { eob = " " }
-opt.ignorecase = true
-opt.smartcase = true
-opt.mouse = "a"
+opt.fillchars              = { eob = " " }
+opt.ignorecase             = true
+opt.smartcase              = true
+opt.mouse                  = "a"
 
--- 行番号
-opt.number = true
-opt.numberwidth = 2
-opt.ruler = false
+-- row number
+opt.number                 = true
+opt.numberwidth            = 2
+opt.ruler                  = false
+opt.colorcolumn            = "120"
 
--- 列位置ハイライト
-opt.colorcolumn = "120"
-
--- NVIM intro を無効にします
+-- disable nvim intro
 opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
@@ -51,21 +62,17 @@ opt.splitright = true
 opt.termguicolors = true
 opt.timeoutlen = 400
 opt.undofile = true
--- opt.pumblend = 0
--- opt.winblend = 0
 
 opt.list = true
 opt.listchars = "tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%"
-
--- gitsignsが使用するスワップファイルをディスクに書き込むための間隔
 opt.updatetime = 250
 
--- 一部のデフォルトプロバイダーを無効にします
+-- disable default some providers.
 for _, provider in ipairs({ "node", "perl", "python3", "ruby" }) do
   vim.g["loaded_" .. provider .. "_provider"] = 0
 end
 
--- 使用するターミナルをcmdではなくnuに変更する
+-- set nu shell, not cmd or pwsh
 local powershell_options = {
   shell = vim.fn.executable("nu") == 1 and "nu" or "cmd",
   shellcmdflag = "-c",
@@ -76,14 +83,14 @@ for option, value in pairs(powershell_options) do
   vim.opt[option] = value
 end
 
--- pythonのパスを設定する、uvによってglobal設定されているpythonを使用する
+-- set python path by uv python
 local result = vim.fn.system("uv python find")
 local function cr_lines(s)
   return s:gsub("\r\n?", "\n"):gmatch("(.-)\n")
 end
 g.python3_host_prog = cr_lines(result)()
 
--- ターミナルを開いたときにインサートモードで開始する
+-- into insert mode when open terminal.
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
   pattern = "*",
   command = "startinsert",
@@ -96,9 +103,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- vim.api.nvim_create_user_command("OpenVimrc", "<cmd>e ~/.config/nvim/init.lua", {})
---
--- ripgrepが実行できるならrgコマンドを使わせる
+-- use rg instead of grep, if can execute ripgrep
 if vim.fn.executable('rg') == 1 then
   vim.o.grepprg = "rg --vimgrep --hidden --glob ‘!.git’"
 end
