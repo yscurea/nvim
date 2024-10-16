@@ -11,6 +11,7 @@ local mappings = {
     ["<Leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "find diagnostics" },
     ["<Leader>fco"] = { "<cmd> Telescope colorscheme <CR>", "find colorscheme" },
     ["<Leader>fN"] = { "<cmd> Telescope notify <CR>", "find Notify" },
+    ["<Leader>fK"] = { "<cmd> Telescope keymaps <CR>", "find keymaps" },
 
     ["<Leader>fgc"] = { "<cmd> Telescope git_commits <CR>", "Git commits list" },
     ["<Leader>fgt"] = { "<cmd> Telescope git_status <CR>", "Git status list" },
