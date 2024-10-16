@@ -1,12 +1,10 @@
--- コードの問題点を一覧で表示
-
 return {
   "folke/trouble.nvim",
   lazy = true,
   cmd = { "Trouble" },
   keys = {
-    { "<Leader>ftd", "<cmd> Trouble diagnostics <CR>", desc = "問題一覧ウィンドウを開く", mode = "n" },
-    { "<Leader>ftl", "<cmd> Trouble lsp <CR>", desc = "問題一覧ウィンドウを開く", mode = "n" },
+    { "<Leader>ftd", "<cmd> Trouble diagnostics <CR>", desc = "Open Problems by diagnostics", mode = "n" },
+    { "<Leader>ftl", "<cmd> Trouble lsp <CR>",         desc = "Open Problems by lsp",         mode = "n" },
   },
   config = function()
     require("trouble").setup({

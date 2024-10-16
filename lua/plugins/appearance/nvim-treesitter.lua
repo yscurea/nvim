@@ -1,6 +1,4 @@
--- 構文解析による色付けやその他機能のため
 -- required gcc
-
 return {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
