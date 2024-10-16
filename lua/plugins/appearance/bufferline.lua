@@ -3,11 +3,11 @@ return {
   lazy = true,
   event = "BufAdd",
   keys = {
-    { "<s-Tab>", "<cmd>BufferLineCyclePrev<CR>", desc = "前バッファへ", mode = "n" },
-    { "<Tab>", "<cmd>BufferLineCycleNext<CR>", desc = "次バッファへ", mode = "n" },
-    { "<Leader><", "<cmd>BufferLineMovePrev<CR>", desc = "バッファを左に移動", mode = "n" },
-    { "<Leader>>", "<cmd>BufferLineMoveNext<CR>", desc = "バッファを右に移動", mode = "n" },
-    { "<Leader>b", "<cmd>BufferLinePick<CR>", desc = "バッファ選択", mode = "n" },
+    { "<s-Tab>",   "<cmd>BufferLineCyclePrev<CR>", desc = "Next buffer",      mode = "n" },
+    { "<Tab>",     "<cmd>BufferLineCycleNext<CR>", desc = "Prev buffer",      mode = "n" },
+    { "<Leader><", "<cmd>BufferLineMovePrev<CR>",  desc = "Buffer move prev", mode = "n" },
+    { "<Leader>>", "<cmd>BufferLineMoveNext<CR>",  desc = "Buffer move next", mode = "n" },
+    { "<Leader>b", "<cmd>BufferLinePick<CR>",      desc = "Select buffer",    mode = "n" },
   },
   config = function()
     require("bufferline").setup({
