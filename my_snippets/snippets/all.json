@@ -1,8 +1,6 @@
 {
 	"snip1": {
 		"prefix": "fin",
-		"body": [
-			"${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}"
-		]
+		"body": ["${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}}"]
 	}
 }
