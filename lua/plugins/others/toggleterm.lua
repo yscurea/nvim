@@ -1,13 +1,18 @@
 -- ターミナル制御
-function LazygitToggle()
+function GitUIToggle()
   local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit = Terminal:new({
-    cmd = "lazygit",
+  local gitui = Terminal:new({
+    cmd = "gitui",
     direction = "float",
     hidden = true,
     count = 10,
+    float_opts = {
+      width = function()
+        return math.floor(vim.o.columns * 0.9)
+      end,
+    }
   })
-  lazygit:toggle()
+  gitui:toggle()
 end
 
 -- ターミナルを使いやすくする
@@ -17,20 +22,20 @@ local mappings = {
     ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "画面中央にターミナルを開く" },
     ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "画面下にターミナルを開く" },
     ["<A-i>"] = { "<Esc><cmd>ToggleTerm direction=float size=15<CR>", "画面中央にターミナルを開く" },
-    ["<A-g>"] = { "<cmd>lua LazygitToggle()<CR>", "lazygit" },
+    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "gitui" },
   },
   i = {
     ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "画面右にターミナルを開く" },
     ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "画面中央にターミナルを開く" },
     ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "画面下にターミナルを開く" },
     ["<A-i>"] = { "<Esc><cmd>ToggleTerm direction=float size=15<CR>", "画面中央にターミナルを開く" },
-    ["<A-g>"] = { "<cmd>lua LazygitToggle()<CR>", "lazygit" },
+    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "gitui" },
   },
   t = {
     ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "画面右にターミナルを開く" },
     ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "画面中央にターミナルを開く" },
     ["<A-i>"] = { "<Esc><cmd>ToggleTerm direction=float size=15<CR>", "画面中央にターミナルを開く" },
-    ["<A-g>"] = { "<cmd>lua LazygitToggle()<CR>", "lazygit" },
+    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "gitui" },
   },
 }
 
