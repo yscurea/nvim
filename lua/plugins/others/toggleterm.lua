@@ -42,6 +42,13 @@ return {
   init = function()
     require("core.utils").load_mappings(mappings)
   end,
-  config = true,
+  config = function()
+    require("toggleterm").setup{
+      float_opts = {
+        border = 'double',
+        width = 100,
+      },
+    }
+  end,
   lazy = true,
 }
