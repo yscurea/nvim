@@ -123,8 +123,8 @@ return {
   event = "BufReadPost",
   lazy = true,
   config = function()
+    -- set up before set up lspconfig.
     require("neoconf")
-    local util = require("lspconfig/util")
     local navic = require("nvim-navic")
     local navbuddy = require("nvim-navbuddy")
     local border = {

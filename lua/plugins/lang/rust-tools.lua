@@ -1,25 +1,17 @@
 return {
-  "simrat39/rust-tools.nvim",
-  lazy = true,
-  ft = { "rust" },
+  "mrcjkb/rustaceanvim",
+  version = "^5", -- Recommended
+  lazy = false,   -- This plugin is already lazy
   config = function()
-    require("rust-tools").setup({
-      tools = {
-        runnables = {
-          use_telescope = true,
-        },
-        inlay_hints = {
-          auto = true,
-          show_parameter_hints = true,
-          parameter_hints_prefix = "",
-          other_hints_prefix = "",
-        },
-      },
-      server = {
-        on_attach = function(_, buf)
-          vim.keymap.set("n", "<Leader>a", require("rust-tools").code_action_group.code_action_group, { buffer = buf })
-        end,
-      },
-    })
-  end,
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.keymap.set(
+      "n",
+      "<leader>a",
+      function()
+        vim.cmd.RustLsp('codeAction') -- supports rust-analyzer's grouping
+        -- or vim.lsp.buf.codeAction() if you don't want grouping.
+      end,
+      { silent = true, buffer = bufnr }
+    )
+  end
 }

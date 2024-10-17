@@ -1,5 +1,5 @@
 return {
-  "rhysd/accelerated-jk",
+  'rainbowhxch/accelerated-jk.nvim',
   lazy = true,
   event = "CursorMoved",
   keys = {

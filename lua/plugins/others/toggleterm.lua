@@ -16,24 +16,22 @@ end
 
 local mappings = {
   n = {
-    ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "画面右にターミナルを開く" },
-    ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "画面中央にターミナルを開く" },
-    ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "画面下にターミナルを開く" },
-    ["<A-i>"] = { "<Esc><cmd>ToggleTerm direction=float size=15<CR>", "画面中央にターミナルを開く" },
-    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "gitui" },
+    ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "Open right terminal" },
+    ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "Open center terminal" },
+    ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "Open bottom terminal" },
+    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "Open gitui terminal" },
   },
   i = {
-    ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "画面右にターミナルを開く" },
-    ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "画面中央にターミナルを開く" },
-    ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "画面下にターミナルを開く" },
-    ["<A-i>"] = { "<Esc><cmd>ToggleTerm direction=float size=15<CR>", "画面中央にターミナルを開く" },
-    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "gitui" },
+    ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "Open right terminal" },
+    ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "Open center terminal" },
+    ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "Open bottom terminal" },
+    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "Open gitui terminal" },
   },
   t = {
-    ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "画面右にターミナルを開く" },
-    ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "画面中央にターミナルを開く" },
-    ["<A-i>"] = { "<Esc><cmd>ToggleTerm direction=float size=15<CR>", "画面中央にターミナルを開く" },
-    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "gitui" },
+    ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "Open right terminal" },
+    ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "Open center terminal" },
+    ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "Open bottom terminal" },
+    ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "Open gitui terminal" },
   },
 }
 
@@ -46,7 +44,7 @@ return {
     require("core.utils").load_mappings(mappings)
   end,
   config = function()
-    require("toggleterm").setup{
+    require("toggleterm").setup {
       float_opts = {
         border = 'double',
         width = 100,

@@ -1,15 +1,15 @@
 local mappings = {
   n = {
-    ["<F5>"] = { ":DapContinue<CR>", "デバッグ実行" },
-    ["<F10>"] = { ":DapStepOver<CR>", "" },
-    ["<F11>"] = { ":DapStepInto<CR>", "" },
-    ["<F12>"] = { ":DapStepOut<CR>", "" },
-    ["<Leader>dB"] = { ":DapToggleBreakpoint<CR>", "" },
+    ["<F5>"] = { ":DapContinue<CR>", "Debug Continue" },
+    ["<F10>"] = { ":DapStepOver<CR>", "Debug StepOver" },
+    ["<F11>"] = { ":DapStepInto<CR>", "Debug StepInto" },
+    ["<F12>"] = { ":DapStepOut<CR>", "Debug StepOut" },
+    ["<Leader>dB"] = { ":DapToggleBreakpoint<CR>", "Debug ToggleBreakpoint" },
     ["<Leader>dlp"] = {
       function()
         require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
       end,
-      "ブレークポイントセット",
+      "Set breakpoint",
     },
     ["<Leader>dr"] = {
       function()
