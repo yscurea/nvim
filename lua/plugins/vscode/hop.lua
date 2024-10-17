@@ -1,4 +1,3 @@
--- カーソル移動をどこでも一発で
 return {
   "smoka7/hop.nvim",
   branch = "v2",

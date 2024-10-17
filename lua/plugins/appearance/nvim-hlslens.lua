@@ -1,4 +1,3 @@
--- 検索でヒット数表示など
 return {
   "kevinhwang91/nvim-hlslens",
   keys = { "*", "/", "#", "n", "N", "g*", "G#" },

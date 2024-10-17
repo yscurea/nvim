@@ -1,4 +1,3 @@
--- スクロールバーの表示
 return {
   "petertriho/nvim-scrollbar",
   lazy = true,

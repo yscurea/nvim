@@ -1,4 +1,3 @@
--- 名前のcase変換
 return {
   "arthurxavierx/vim-caser",
   lazy = true,

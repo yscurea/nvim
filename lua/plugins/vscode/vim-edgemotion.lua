@@ -1,4 +1,3 @@
--- 空白飛ばし上下移動
 
 return {
   "haya14busa/vim-edgemotion",

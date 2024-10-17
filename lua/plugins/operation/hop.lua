@@ -1,4 +1,3 @@
--- カーソル移動をどこでも一発で
 return {
   "phaazon/hop.nvim",
   branch = "v2",

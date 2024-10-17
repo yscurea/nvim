@@ -1,4 +1,3 @@
--- git の見た目
 return {
   "lewis6991/gitsigns.nvim",
   lazy = true,

@@ -1,4 +1,3 @@
--- git diffを扱いやすく
 return {
   "sindrets/diffview.nvim",
   cmd = {

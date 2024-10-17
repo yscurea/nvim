@@ -1,4 +1,3 @@
--- ターミナル制御
 function GitUIToggle()
   local Terminal = require("toggleterm.terminal").Terminal
   local gitui = Terminal:new({
@@ -15,7 +14,6 @@ function GitUIToggle()
   gitui:toggle()
 end
 
--- ターミナルを使いやすくする
 local mappings = {
   n = {
     ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "画面右にターミナルを開く" },

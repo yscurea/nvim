@@ -1,4 +1,3 @@
--- コメントで書かれたメモの検索、見やすさなど
 return {
   "folke/todo-comments.nvim",
   lazy = true,

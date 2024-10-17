@@ -1,4 +1,3 @@
--- カラーコードなどを色づけしてくれる
 return {
   "norcalli/nvim-colorizer.lua",
   cmd = {

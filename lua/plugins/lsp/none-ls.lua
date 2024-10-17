@@ -1,4 +1,3 @@
--- LSPではないものをNeovimのLSPに注入してLSPのように動かすため
 return {
   "nvimtools/none-ls.nvim",
   lazy = true,

@@ -1,8 +1,6 @@
 local M = {}
 local merge_tb = vim.tbl_deep_extend
 
--- マッピング設定の読み込み用関数
--- target_mappings は { n = {}, i = {}, } のような形式
 M.load_mappings = function(target_mappings, mapping_options)
   local function set_section_map(section_values)
     for mode, mode_values in pairs(section_values) do

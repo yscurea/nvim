@@ -1,4 +1,3 @@
--- 加速jk
 return {
   "rhysd/accelerated-jk",
   lazy = true,

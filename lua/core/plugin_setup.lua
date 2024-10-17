@@ -1,5 +1,3 @@
--- pluginの読み込みには lazy.nvim を使用する
--- lazy.nvimがなければインストール
 local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazy_path) then
   print("start cloning lazy.nvim")

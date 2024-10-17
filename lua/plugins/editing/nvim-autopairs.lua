@@ -1,4 +1,4 @@
-return { -- 括弧を書いたら閉じ括弧も自動挿入する (){}[] etc
+return {
   "windwp/nvim-autopairs",
   lazy = true,
   event = "InsertEnter",

@@ -1,4 +1,3 @@
--- 下に各種情報表示
 return {
   "nvim-lualine/lualine.nvim",
   event = "CursorMoved",

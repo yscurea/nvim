@@ -1,5 +1,3 @@
--- fold by treesitter
--- treesitterによる折り畳みの作成と表示
 return {
   "kevinhwang91/nvim-ufo",
   lazy = true,

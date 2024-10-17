@@ -1,4 +1,3 @@
--- 色々検索ツール
 local mappings = {
   n = {
     ["<Leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },

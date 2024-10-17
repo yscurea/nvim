@@ -1,5 +1,3 @@
--- 通知を出す
--- これによって操作を中断されない
 return {
   "rcarriga/nvim-notify",
   lazy = true,

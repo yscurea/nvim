@@ -1,4 +1,3 @@
--- Flutterのコマンドバインディング
 local mappings = {
   n = {
     ["<Leader>rn"] = {

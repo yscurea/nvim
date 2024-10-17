@@ -5,7 +5,6 @@ local mappings = {
   },
 }
 
--- バッファ内シンボルの検索
 return {
   "SmiteshP/nvim-navbuddy",
   lazy = true,

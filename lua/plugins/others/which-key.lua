@@ -1,4 +1,3 @@
--- キーマップのヒント表示
 local mappings = {
   n = {
     ["<Leader>wK"] = {

@@ -1,4 +1,3 @@
--- コメントアウト
 return {
   "numToStr/Comment.nvim",
   keys = {
