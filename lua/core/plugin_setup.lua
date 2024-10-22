@@ -26,4 +26,5 @@ require("lazy").setup({
   { import = "plugins.operation" },
   { import = "plugins.others" },
   { import = "plugins.snippet" },
+  -- { import = "plugins.ai" },
 }, lazy_config)
