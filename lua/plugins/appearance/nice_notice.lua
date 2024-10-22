@@ -1,4 +1,3 @@
--- リッチな通知とコマンドラインの中央表示
 return {
   "folke/noice.nvim",
   lazy = true,
