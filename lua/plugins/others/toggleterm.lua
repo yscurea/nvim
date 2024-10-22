@@ -30,7 +30,6 @@ local mappings = {
   t = {
     ["<A-l>"] = { "<cmd>ToggleTerm direction=vertical size=90<CR>", "Open right terminal" },
     ["<A-f>"] = { "<cmd>ToggleTerm direction=float size=80<CR>", "Open center terminal" },
-    ["<A-j>"] = { "<Esc><cmd>ToggleTerm direction=horizontal size=20<CR>", "Open bottom terminal" },
     ["<A-g>"] = { "<cmd>lua GitUIToggle()<CR>", "Open gitui terminal" },
   },
 }
