@@ -46,7 +46,7 @@ local mappings = {
       "LSP definition type",
     },
 
-    ["<Leader>a"] = {
+    ["ga"] = {
       "<cmd>Lspsaga code_action<CR>",
       "LSP code action",
     },
@@ -66,17 +66,11 @@ local mappings = {
     },
 
     ["<Leader>fj"] = {
-      -- function()
-      --   vim.diagnostic.goto_next({ float = { border = "rounded" } })
-      -- end,
       "<cmd>Lspsaga diagnostic_jump_next<CR>",
       "Goto next",
     },
 
     ["<Leader>fk"] = {
-      -- function()
-      --   vim.diagnostic.goto_prev({ float = { border = "rounded" } })
-      -- end,
       "<cmd>Lspsaga diagnostic_jump_prev<CR>",
       "Goto prev",
     },
