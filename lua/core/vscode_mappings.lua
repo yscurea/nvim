@@ -101,7 +101,24 @@ return {
       end,
       "close all buffer"
     },
-
+    ["<Leader>cc"] = {
+      function()
+        require("vscode-neovim").call("workbench.action.closeActiveEditor")
+      end,
+      "close other editors"
+    },
+    ["<Leader>co"] = {
+      function()
+        require("vscode-neovim").call("workbench.action.closeOtherEditors")
+      end,
+      "close other editors"
+    },
+    ["ga"] = {
+      function()
+        require("vscode-neovim").call("editor.action.quickFix")
+      end,
+      "open code action"
+    },
     ["so"] = { "zo", "open fold" },
     ["sO"] = { "zO", "open all fold" },
     ["sa"] = { "zo", "tmp toggle fold" },
